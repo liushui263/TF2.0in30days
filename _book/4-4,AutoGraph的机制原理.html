@@ -1,0 +1,831 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>4-4,AutoGraph的机制原理 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="4-5,AutoGraph和tf.Module.html" />
+    
+    
+    <link rel="prev" href="4-3,AutoGraph的使用规范.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="一、TensorFlow的建模流程.html">
+            
+                <a href="一、TensorFlow的建模流程.html">
+            
+                    
+                    一、TensorFlow的建模流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="1-1,结构化数据建模流程范例.html">
+            
+                <a href="1-1,结构化数据建模流程范例.html">
+            
+                    
+                    1-1,结构化数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="1-2,图片数据建模流程范例.html">
+            
+                <a href="1-2,图片数据建模流程范例.html">
+            
+                    
+                    1-2,图片数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="1-3,文本数据建模流程范例.html">
+            
+                <a href="1-3,文本数据建模流程范例.html">
+            
+                    
+                    1-3,文本数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="1-4,时间序列数据建模流程范例.html">
+            
+                <a href="1-4,时间序列数据建模流程范例.html">
+            
+                    
+                    1-4,时间序列数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="二、TensorFlow的核心概念.html">
+            
+                <a href="二、TensorFlow的核心概念.html">
+            
+                    
+                    二、TensorFlow的核心概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="2-1,张量数据结构.html">
+            
+                <a href="2-1,张量数据结构.html">
+            
+                    
+                    2-1,张量数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="2-2,三种计算图.html">
+            
+                <a href="2-2,三种计算图.html">
+            
+                    
+                    2-2,三种计算图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="2-3,自动微分机制.html">
+            
+                <a href="2-3,自动微分机制.html">
+            
+                    
+                    2-3,自动微分机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="三、TensorFlow的层次结构.html">
+            
+                <a href="三、TensorFlow的层次结构.html">
+            
+                    
+                    三、TensorFlow的层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="3-1,低阶API示范.html">
+            
+                <a href="3-1,低阶API示范.html">
+            
+                    
+                    3-1,低阶API示范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="3-2,中阶API示范.html">
+            
+                <a href="3-2,中阶API示范.html">
+            
+                    
+                    3-2,中阶API示范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="3-3,高阶API示范.html">
+            
+                <a href="3-3,高阶API示范.html">
+            
+                    
+                    3-3,高阶API示范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="四、TensorFlow的低阶API.html">
+            
+                <a href="四、TensorFlow的低阶API.html">
+            
+                    
+                    四、TensorFlow的低阶API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="4-1,张量的结构操作.html">
+            
+                <a href="4-1,张量的结构操作.html">
+            
+                    
+                    4-1,张量的结构操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="4-2,张量的数学运算.html">
+            
+                <a href="4-2,张量的数学运算.html">
+            
+                    
+                    4-2,张量的数学运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="4-3,AutoGraph的使用规范.html">
+            
+                <a href="4-3,AutoGraph的使用规范.html">
+            
+                    
+                    4-3,AutoGraph的使用规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.19" data-path="4-4,AutoGraph的机制原理.html">
+            
+                <a href="4-4,AutoGraph的机制原理.html">
+            
+                    
+                    4-4,AutoGraph的机制原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="4-5,AutoGraph和tf.Module.html">
+            
+                <a href="4-5,AutoGraph和tf.Module.html">
+            
+                    
+                    4-5,AutoGraph和tf.Module
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" data-path="五、TensorFlow的中阶API.html">
+            
+                <a href="五、TensorFlow的中阶API.html">
+            
+                    
+                    五、TensorFlow的中阶API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" data-path="5-1,数据管道Dataset.html">
+            
+                <a href="5-1,数据管道Dataset.html">
+            
+                    
+                    5-1,数据管道Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" data-path="5-2,特征列feature_column.html">
+            
+                <a href="5-2,特征列feature_column.html">
+            
+                    
+                    5-2,特征列feature_column
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24" data-path="5-3,激活函数activation.html">
+            
+                <a href="5-3,激活函数activation.html">
+            
+                    
+                    5-3,激活函数activation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25" data-path="5-4,模型层layers.html">
+            
+                <a href="5-4,模型层layers.html">
+            
+                    
+                    5-4,模型层layers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26" data-path="5-5,损失函数losses.html">
+            
+                <a href="5-5,损失函数losses.html">
+            
+                    
+                    5-5,损失函数losses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27" data-path="5-6,评估指标metrics.html">
+            
+                <a href="5-6,评估指标metrics.html">
+            
+                    
+                    5-6,评估指标metrics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.28" data-path="5-7,优化器optimizers.html">
+            
+                <a href="5-7,优化器optimizers.html">
+            
+                    
+                    5-7,优化器optimizers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29" data-path="5-8,回调函数callbacks.html">
+            
+                <a href="5-8,回调函数callbacks.html">
+            
+                    
+                    5-8,回调函数callbacks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30" data-path="六、TensorFlow的高阶API.html">
+            
+                <a href="六、TensorFlow的高阶API.html">
+            
+                    
+                    六、TensorFlow的高阶API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31" data-path="6-1,构建模型的3种方法.html">
+            
+                <a href="6-1,构建模型的3种方法.html">
+            
+                    
+                    6-1,构建模型的3种方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.32" data-path="6-2,训练模型的3种方法.html">
+            
+                <a href="6-2,训练模型的3种方法.html">
+            
+                    
+                    6-2,训练模型的3种方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.33" data-path="6-3,使用单GPU训练模型.html">
+            
+                <a href="6-3,使用单GPU训练模型.html">
+            
+                    
+                    6-3,使用单GPU训练模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34" data-path="6-4,使用多GPU训练模型.html">
+            
+                <a href="6-4,使用多GPU训练模型.html">
+            
+                    
+                    6-4,使用多GPU训练模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.35" data-path="6-5,使用TPU训练模型.html">
+            
+                <a href="6-5,使用TPU训练模型.html">
+            
+                    
+                    6-5,使用TPU训练模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.36" data-path="6-6,使用tensorflow-serving部署模型.html">
+            
+                <a href="6-6,使用tensorflow-serving部署模型.html">
+            
+                    
+                    6-6,使用tensorflow-serving部署模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.37" data-path="6-7,使用spark-scala调用tensorflow模型.html">
+            
+                <a href="6-7,使用spark-scala调用tensorflow模型.html">
+            
+                    
+                    6-7,使用spark-scala调用tensorflow模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.38" data-path="后记：一个吃货和一道菜的故事.html">
+            
+                <a href="后记：一个吃货和一道菜的故事.html">
+            
+                    
+                    后记：一个吃货和一道菜的故事
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >4-4,AutoGraph的机制原理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="4-4autograph&#x7684;&#x673A;&#x5236;&#x539F;&#x7406;">4-4,AutoGraph&#x7684;&#x673A;&#x5236;&#x539F;&#x7406;</h1>
+<p>&#x6709;&#x4E09;&#x79CD;&#x8BA1;&#x7B97;&#x56FE;&#x7684;&#x6784;&#x5EFA;&#x65B9;&#x5F0F;&#xFF1A;&#x9759;&#x6001;&#x8BA1;&#x7B97;&#x56FE;&#xFF0C;&#x52A8;&#x6001;&#x8BA1;&#x7B97;&#x56FE;&#xFF0C;&#x4EE5;&#x53CA;Autograph&#x3002;</p>
+<p>TensorFlow 2.0&#x4E3B;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x52A8;&#x6001;&#x8BA1;&#x7B97;&#x56FE;&#x548C;Autograph&#x3002;</p>
+<p>&#x52A8;&#x6001;&#x8BA1;&#x7B97;&#x56FE;&#x6613;&#x4E8E;&#x8C03;&#x8BD5;&#xFF0C;&#x7F16;&#x7801;&#x6548;&#x7387;&#x8F83;&#x9AD8;&#xFF0C;&#x4F46;&#x6267;&#x884C;&#x6548;&#x7387;&#x504F;&#x4F4E;&#x3002;</p>
+<p>&#x9759;&#x6001;&#x8BA1;&#x7B97;&#x56FE;&#x6267;&#x884C;&#x6548;&#x7387;&#x5F88;&#x9AD8;&#xFF0C;&#x4F46;&#x8F83;&#x96BE;&#x8C03;&#x8BD5;&#x3002;</p>
+<p>&#x800C;Autograph&#x673A;&#x5236;&#x53EF;&#x4EE5;&#x5C06;&#x52A8;&#x6001;&#x56FE;&#x8F6C;&#x6362;&#x6210;&#x9759;&#x6001;&#x8BA1;&#x7B97;&#x56FE;&#xFF0C;&#x517C;&#x6536;&#x6267;&#x884C;&#x6548;&#x7387;&#x548C;&#x7F16;&#x7801;&#x6548;&#x7387;&#x4E4B;&#x5229;&#x3002;</p>
+<p>&#x5F53;&#x7136;Autograph&#x673A;&#x5236;&#x80FD;&#x591F;&#x8F6C;&#x6362;&#x7684;&#x4EE3;&#x7801;&#x5E76;&#x4E0D;&#x662F;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x7EA6;&#x675F;&#x7684;&#xFF0C;&#x6709;&#x4E00;&#x4E9B;&#x7F16;&#x7801;&#x89C4;&#x8303;&#x9700;&#x8981;&#x9075;&#x5FAA;&#xFF0C;&#x5426;&#x5219;&#x53EF;&#x80FD;&#x4F1A;&#x8F6C;&#x6362;&#x5931;&#x8D25;&#x6216;&#x8005;&#x4E0D;&#x7B26;&#x5408;&#x9884;&#x671F;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x4F1A;&#x4ECB;&#x7ECD;Autograph&#x7684;&#x7F16;&#x7801;&#x89C4;&#x8303;&#x548C;Autograph&#x8F6C;&#x6362;&#x6210;&#x9759;&#x6001;&#x56FE;&#x7684;&#x539F;&#x7406;&#x3002;</p>
+<p>&#x5E76;&#x4ECB;&#x7ECD;&#x4F7F;&#x7528;tf.Module&#x6765;&#x66F4;&#x597D;&#x5730;&#x6784;&#x5EFA;Autograph&#x3002;</p>
+<p>&#x4E0A;&#x7BC7;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E86;Autograph&#x7684;&#x7F16;&#x7801;&#x89C4;&#x8303;&#xFF0C;&#x672C;&#x7BC7;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;Autograph&#x7684;&#x673A;&#x5236;&#x539F;&#x7406;&#x3002;</p>
+<h3 id="&#x4E00;&#xFF0C;autograph&#x7684;&#x673A;&#x5236;&#x539F;&#x7406;">&#x4E00;&#xFF0C;Autograph&#x7684;&#x673A;&#x5236;&#x539F;&#x7406;</h3>
+<p><strong>&#x5F53;&#x6211;&#x4EEC;&#x4F7F;&#x7528;@tf.function&#x88C5;&#x9970;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x540E;&#x9762;&#x5230;&#x5E95;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</strong></p>
+<p>&#x4F8B;&#x5982;&#x6211;&#x4EEC;&#x5199;&#x4E0B;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np 
+
+<span class="hljs-meta">@tf.function(autograph=True)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">myadd</span><span class="hljs-params">(a,b)</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> tf.range(<span class="hljs-number">3</span>):
+        tf.print(i)
+    c = a+b
+    print(<span class="hljs-string">&quot;tracing&quot;</span>)
+    <span class="hljs-keyword">return</span> c
+</code></pre>
+<p>&#x540E;&#x9762;&#x4EC0;&#x4E48;&#x90FD;&#x6CA1;&#x6709;&#x53D1;&#x751F;&#x3002;&#x4EC5;&#x4EC5;&#x662F;&#x5728;Python&#x5806;&#x6808;&#x4E2D;&#x8BB0;&#x5F55;&#x4E86;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x7B7E;&#x540D;&#x3002;</p>
+<p><strong>&#x5F53;&#x6211;&#x4EEC;&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x88AB;@tf.function&#x88C5;&#x9970;&#x7684;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x540E;&#x9762;&#x5230;&#x5E95;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;&#xFF1F;</strong></p>
+<p>&#x4F8B;&#x5982;&#x6211;&#x4EEC;&#x5199;&#x4E0B;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x3002;</p>
+<pre><code class="lang-python">myadd(tf.constant(<span class="hljs-string">&quot;hello&quot;</span>),tf.constant(<span class="hljs-string">&quot;world&quot;</span>))
+</code></pre>
+<pre><code>tracing
+0
+1
+2
+</code></pre><!-- #region -->
+<p>&#x53D1;&#x751F;&#x4E86;2&#x4EF6;&#x4E8B;&#x60C5;&#xFF0C;</p>
+<p>&#x7B2C;&#x4E00;&#x4EF6;&#x4E8B;&#x60C5;&#x662F;&#x521B;&#x5EFA;&#x8BA1;&#x7B97;&#x56FE;&#x3002;</p>
+<p>&#x5373;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x8BA1;&#x7B97;&#x56FE;&#xFF0C;&#x8DDF;&#x8E2A;&#x6267;&#x884C;&#x4E00;&#x904D;&#x51FD;&#x6570;&#x4F53;&#x4E2D;&#x7684;Python&#x4EE3;&#x7801;&#xFF0C;&#x786E;&#x5B9A;&#x5404;&#x4E2A;&#x53D8;&#x91CF;&#x7684;Tensor&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x6839;&#x636E;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x5C06;&#x7B97;&#x5B50;&#x6DFB;&#x52A0;&#x5230;&#x8BA1;&#x7B97;&#x56FE;&#x4E2D;&#x3002;
+&#x5728;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x5F00;&#x542F;&#x4E86;autograph=True(&#x9ED8;&#x8BA4;&#x5F00;&#x542F;),&#x4F1A;&#x5C06;Python&#x63A7;&#x5236;&#x6D41;&#x8F6C;&#x6362;&#x6210;TensorFlow&#x56FE;&#x5185;&#x63A7;&#x5236;&#x6D41;&#x3002;
+&#x4E3B;&#x8981;&#x662F;&#x5C06;if&#x8BED;&#x53E5;&#x8F6C;&#x6362;&#x6210; tf.cond&#x7B97;&#x5B50;&#x8868;&#x8FBE;&#xFF0C;&#x5C06;while&#x548C;for&#x5FAA;&#x73AF;&#x8BED;&#x53E5;&#x8F6C;&#x6362;&#x6210;tf.while_loop&#x7B97;&#x5B50;&#x8868;&#x8FBE;&#xFF0C;&#x5E76;&#x5728;&#x5FC5;&#x8981;&#x7684;&#x65F6;&#x5019;&#x6DFB;&#x52A0;
+tf.control_dependencies&#x6307;&#x5B9A;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x3002;</p>
+<p>&#x76F8;&#x5F53;&#x4E8E;&#x5728; tensorflow1.0&#x6267;&#x884C;&#x4E86;&#x7C7B;&#x4F3C;&#x4E0B;&#x9762;&#x7684;&#x8BED;&#x53E5;&#xFF1A;</p>
+<pre><code class="lang-python">g = tf.Graph()
+<span class="hljs-keyword">with</span> g.as_default():
+    a = tf.placeholder(shape=[],dtype=tf.string)
+    b = tf.placeholder(shape=[],dtype=tf.string)
+    cond = <span class="hljs-keyword">lambda</span> i: i&lt;tf.constant(<span class="hljs-number">3</span>)
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">body</span><span class="hljs-params">(i)</span>:</span>
+        tf.print(i)
+        <span class="hljs-keyword">return</span>(i+<span class="hljs-number">1</span>)
+    loop = tf.while_loop(cond,body,loop_vars=[<span class="hljs-number">0</span>])
+    loop
+    <span class="hljs-keyword">with</span> tf.control_dependencies(loop):
+        c = tf.strings.join([a,b])
+    print(<span class="hljs-string">&quot;tracing&quot;</span>)
+</code></pre>
+<p>&#x7B2C;&#x4E8C;&#x4EF6;&#x4E8B;&#x60C5;&#x662F;&#x6267;&#x884C;&#x8BA1;&#x7B97;&#x56FE;&#x3002;</p>
+<p>&#x76F8;&#x5F53;&#x4E8E;&#x5728; tensorflow1.0&#x4E2D;&#x6267;&#x884C;&#x4E86;&#x4E0B;&#x9762;&#x7684;&#x8BED;&#x53E5;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">with</span> tf.Session(graph=g) <span class="hljs-keyword">as</span> sess:
+    sess.run(c,feed_dict={a:tf.constant(<span class="hljs-string">&quot;hello&quot;</span>),b:tf.constant(<span class="hljs-string">&quot;world&quot;</span>)})
+</code></pre>
+<p>&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x5148;&#x770B;&#x5230;&#x7684;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x6B65;&#x9AA4;&#x7684;&#x7ED3;&#x679C;&#xFF1A;&#x5373;Python&#x8C03;&#x7528;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x6D41;&#x6253;&#x5370;&quot;tracing&quot;&#x8BED;&#x53E5;&#x3002;</p>
+<p>&#x7136;&#x540E;&#x770B;&#x5230;&#x7B2C;&#x4E8C;&#x4E2A;&#x6B65;&#x9AA4;&#x7684;&#x7ED3;&#x679C;&#xFF1A;TensorFlow&#x8C03;&#x7528;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x6D41;&#x6253;&#x5370;1,2,3&#x3002;</p>
+<!-- #endregion -->
+<p><strong>&#x5F53;&#x6211;&#x4EEC;&#x518D;&#x6B21;&#x7528;&#x76F8;&#x540C;&#x7684;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x88AB;@tf.function&#x88C5;&#x9970;&#x7684;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x540E;&#x9762;&#x5230;&#x5E95;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;&#xFF1F;</strong></p>
+<p>&#x4F8B;&#x5982;&#x6211;&#x4EEC;&#x5199;&#x4E0B;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x3002;</p>
+<pre><code class="lang-python">myadd(tf.constant(<span class="hljs-string">&quot;good&quot;</span>),tf.constant(<span class="hljs-string">&quot;morning&quot;</span>))
+</code></pre>
+<pre><code>0
+1
+2
+</code></pre><p>&#x53EA;&#x4F1A;&#x53D1;&#x751F;&#x4E00;&#x4EF6;&#x4E8B;&#x60C5;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x6B65;&#x9AA4;&#x7684;&#x7B2C;&#x4E8C;&#x6B65;&#xFF0C;&#x6267;&#x884C;&#x8BA1;&#x7B97;&#x56FE;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x8FD9;&#x4E00;&#x6B21;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x770B;&#x5230;&#x6253;&#x5370;&quot;tracing&quot;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<p><strong>&#x5F53;&#x6211;&#x4EEC;&#x518D;&#x6B21;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x7684;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x88AB;@tf.function&#x88C5;&#x9970;&#x7684;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x540E;&#x9762;&#x5230;&#x5E95;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;&#xFF1F;</strong></p>
+<p>&#x4F8B;&#x5982;&#x6211;&#x4EEC;&#x5199;&#x4E0B;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x3002;</p>
+<pre><code class="lang-python">myadd(tf.constant(<span class="hljs-number">1</span>),tf.constant(<span class="hljs-number">2</span>))
+</code></pre>
+<pre><code>tracing
+0
+1
+2
+</code></pre><p>&#x7531;&#x4E8E;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x5DF2;&#x7ECF;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x5DF2;&#x7ECF;&#x521B;&#x5EFA;&#x7684;&#x8BA1;&#x7B97;&#x56FE;&#x4E0D;&#x80FD;&#x591F;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x91CD;&#x65B0;&#x505A;2&#x4EF6;&#x4E8B;&#x60C5;&#xFF1A;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x8BA1;&#x7B97;&#x56FE;&#x3001;&#x6267;&#x884C;&#x8BA1;&#x7B97;&#x56FE;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53C8;&#x4F1A;&#x5148;&#x770B;&#x5230;&#x7684;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x6B65;&#x9AA4;&#x7684;&#x7ED3;&#x679C;&#xFF1A;&#x5373;Python&#x8C03;&#x7528;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x6D41;&#x6253;&#x5370;&quot;tracing&quot;&#x8BED;&#x53E5;&#x3002;</p>
+<p>&#x7136;&#x540E;&#x518D;&#x770B;&#x5230;&#x7B2C;&#x4E8C;&#x4E2A;&#x6B65;&#x9AA4;&#x7684;&#x7ED3;&#x679C;&#xFF1A;TensorFlow&#x8C03;&#x7528;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x6D41;&#x6253;&#x5370;1,2,3&#x3002;</p>
+<p><strong>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x8C03;&#x7528;&#x88AB;@tf.function&#x88C5;&#x9970;&#x7684;&#x51FD;&#x6570;&#x65F6;&#x8F93;&#x5165;&#x7684;&#x53C2;&#x6570;&#x4E0D;&#x662F;Tensor&#x7C7B;&#x578B;&#xFF0C;&#x5219;&#x6BCF;&#x6B21;&#x90FD;&#x4F1A;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x8BA1;&#x7B97;&#x56FE;&#x3002;</strong></p>
+<p>&#x4F8B;&#x5982;&#x6211;&#x4EEC;&#x5199;&#x4E0B;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x3002;&#x4E24;&#x6B21;&#x90FD;&#x4F1A;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x8BA1;&#x7B97;&#x56FE;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x4E00;&#x822C;&#x5EFA;&#x8BAE;&#x8C03;&#x7528;@tf.function&#x65F6;&#x5E94;&#x4F20;&#x5165;Tensor&#x7C7B;&#x578B;&#x3002;</p>
+<pre><code class="lang-python">myadd(<span class="hljs-string">&quot;hello&quot;</span>,<span class="hljs-string">&quot;world&quot;</span>)
+myadd(<span class="hljs-string">&quot;good&quot;</span>,<span class="hljs-string">&quot;morning&quot;</span>)
+</code></pre>
+<pre><code>tracing
+0
+1
+2
+tracing
+0
+1
+2
+</code></pre><pre><code class="lang-python">
+
+</code></pre>
+<pre><code class="lang-python">
+
+</code></pre>
+<h3 id="&#x4E8C;&#xFF0C;&#x91CD;&#x65B0;&#x7406;&#x89E3;autograph&#x7684;&#x7F16;&#x7801;&#x89C4;&#x8303;">&#x4E8C;&#xFF0C;&#x91CD;&#x65B0;&#x7406;&#x89E3;Autograph&#x7684;&#x7F16;&#x7801;&#x89C4;&#x8303;</h3>
+<p>&#x4E86;&#x89E3;&#x4E86;&#x4EE5;&#x4E0A;Autograph&#x7684;&#x673A;&#x5236;&#x539F;&#x7406;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x5C31;&#x80FD;&#x591F;&#x7406;&#x89E3;Autograph&#x7F16;&#x7801;&#x89C4;&#x8303;&#x7684;3&#x6761;&#x5EFA;&#x8BAE;&#x4E86;&#x3002;</p>
+<p>1&#xFF0C;&#x88AB;@tf.function&#x4FEE;&#x9970;&#x7684;&#x51FD;&#x6570;&#x5E94;&#x5C3D;&#x91CF;&#x4F7F;&#x7528;TensorFlow&#x4E2D;&#x7684;&#x51FD;&#x6570;&#x800C;&#x4E0D;&#x662F;Python&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x51FD;&#x6570;&#x3002;&#x4F8B;&#x5982;&#x4F7F;&#x7528;tf.print&#x800C;&#x4E0D;&#x662F;print.</p>
+<p>&#x89E3;&#x91CA;&#xFF1A;Python&#x4E2D;&#x7684;&#x51FD;&#x6570;&#x4EC5;&#x4EC5;&#x4F1A;&#x5728;&#x8DDF;&#x8E2A;&#x6267;&#x884C;&#x51FD;&#x6570;&#x4EE5;&#x521B;&#x5EFA;&#x9759;&#x6001;&#x56FE;&#x7684;&#x9636;&#x6BB5;&#x4F7F;&#x7528;&#xFF0C;&#x666E;&#x901A;Python&#x51FD;&#x6570;&#x662F;&#x65E0;&#x6CD5;&#x5D4C;&#x5165;&#x5230;&#x9759;&#x6001;&#x8BA1;&#x7B97;&#x56FE;&#x4E2D;&#x7684;&#xFF0C;&#x6240;&#x4EE5;
+&#x5728;&#x8BA1;&#x7B97;&#x56FE;&#x6784;&#x5EFA;&#x597D;&#x4E4B;&#x540E;&#x518D;&#x6B21;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E9B;Python&#x51FD;&#x6570;&#x5E76;&#x6CA1;&#x6709;&#x88AB;&#x8BA1;&#x7B97;&#xFF0C;&#x800C;TensorFlow&#x4E2D;&#x7684;&#x51FD;&#x6570;&#x5219;&#x53EF;&#x4EE5;&#x5D4C;&#x5165;&#x5230;&#x8BA1;&#x7B97;&#x56FE;&#x4E2D;&#x3002;&#x4F7F;&#x7528;&#x666E;&#x901A;&#x7684;Python&#x51FD;&#x6570;&#x4F1A;&#x5BFC;&#x81F4;
+&#x88AB;@tf.function&#x4FEE;&#x9970;&#x524D;&#x3010;eager&#x6267;&#x884C;&#x3011;&#x548C;&#x88AB;@tf.function&#x4FEE;&#x9970;&#x540E;&#x3010;&#x9759;&#x6001;&#x56FE;&#x6267;&#x884C;&#x3011;&#x7684;&#x8F93;&#x51FA;&#x4E0D;&#x4E00;&#x81F4;&#x3002;</p>
+<p>2&#xFF0C;&#x907F;&#x514D;&#x5728;@tf.function&#x4FEE;&#x9970;&#x7684;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x5B9A;&#x4E49;tf.Variable. </p>
+<p>&#x89E3;&#x91CA;&#xFF1A;&#x5982;&#x679C;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x5B9A;&#x4E49;&#x4E86;tf.Variable,&#x90A3;&#x4E48;&#x5728;&#x3010;eager&#x6267;&#x884C;&#x3011;&#x65F6;&#xFF0C;&#x8FD9;&#x79CD;&#x521B;&#x5EFA;tf.Variable&#x7684;&#x884C;&#x4E3A;&#x5728;&#x6BCF;&#x6B21;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x53D1;&#x751F;&#x3002;&#x4F46;&#x662F;&#x5728;&#x3010;&#x9759;&#x6001;&#x56FE;&#x6267;&#x884C;&#x3011;&#x65F6;&#xFF0C;&#x8FD9;&#x79CD;&#x521B;&#x5EFA;tf.Variable&#x7684;&#x884C;&#x4E3A;&#x53EA;&#x4F1A;&#x53D1;&#x751F;&#x5728;&#x7B2C;&#x4E00;&#x6B65;&#x8DDF;&#x8E2A;Python&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x521B;&#x5EFA;&#x8BA1;&#x7B97;&#x56FE;&#x65F6;&#xFF0C;&#x8FD9;&#x4F1A;&#x5BFC;&#x81F4;&#x88AB;@tf.function&#x4FEE;&#x9970;&#x524D;&#x3010;eager&#x6267;&#x884C;&#x3011;&#x548C;&#x88AB;@tf.function&#x4FEE;&#x9970;&#x540E;&#x3010;&#x9759;&#x6001;&#x56FE;&#x6267;&#x884C;&#x3011;&#x7684;&#x8F93;&#x51FA;&#x4E0D;&#x4E00;&#x81F4;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;TensorFlow&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x4E00;&#x822C;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
+<p>3&#xFF0C;&#x88AB;@tf.function&#x4FEE;&#x9970;&#x7684;&#x51FD;&#x6570;&#x4E0D;&#x53EF;&#x4FEE;&#x6539;&#x8BE5;&#x51FD;&#x6570;&#x5916;&#x90E8;&#x7684;Python&#x5217;&#x8868;&#x6216;&#x5B57;&#x5178;&#x7B49;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x53D8;&#x91CF;&#x3002;</p>
+<p>&#x89E3;&#x91CA;&#xFF1A;&#x9759;&#x6001;&#x8BA1;&#x7B97;&#x56FE;&#x662F;&#x88AB;&#x7F16;&#x8BD1;&#x6210;C++&#x4EE3;&#x7801;&#x5728;TensorFlow&#x5185;&#x6838;&#x4E2D;&#x6267;&#x884C;&#x7684;&#x3002;Python&#x4E2D;&#x7684;&#x5217;&#x8868;&#x548C;&#x5B57;&#x5178;&#x7B49;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x53D8;&#x91CF;&#x662F;&#x65E0;&#x6CD5;&#x5D4C;&#x5165;&#x5230;&#x8BA1;&#x7B97;&#x56FE;&#x4E2D;&#xFF0C;&#x5B83;&#x4EEC;&#x4EC5;&#x4EC5;&#x80FD;&#x591F;&#x5728;&#x521B;&#x5EFA;&#x8BA1;&#x7B97;&#x56FE;&#x65F6;&#x88AB;&#x8BFB;&#x53D6;&#xFF0C;&#x5728;&#x6267;&#x884C;&#x8BA1;&#x7B97;&#x56FE;&#x65F6;&#x662F;&#x65E0;&#x6CD5;&#x4FEE;&#x6539;Python&#x4E2D;&#x7684;&#x5217;&#x8868;&#x6216;&#x5B57;&#x5178;&#x8FD9;&#x6837;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x53D8;&#x91CF;&#x7684;&#x3002;</p>
+<pre><code class="lang-python">
+
+</code></pre>
+<p>&#x5982;&#x679C;&#x5BF9;&#x672C;&#x4E66;&#x5185;&#x5BB9;&#x7406;&#x89E3;&#x4E0A;&#x6709;&#x9700;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x548C;&#x4F5C;&#x8005;&#x4EA4;&#x6D41;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6B22;&#x8FCE;&#x5728;&#x516C;&#x4F17;&#x53F7;&quot;Python&#x4E0E;&#x7B97;&#x6CD5;&#x4E4B;&#x7F8E;&quot;&#x4E0B;&#x7559;&#x8A00;&#x3002;&#x4F5C;&#x8005;&#x65F6;&#x95F4;&#x548C;&#x7CBE;&#x529B;&#x6709;&#x9650;&#xFF0C;&#x4F1A;&#x914C;&#x60C5;&#x4E88;&#x4EE5;&#x56DE;&#x590D;&#x3002;</p>
+<p><img src="data/Python&#x4E0E;&#x7B97;&#x6CD5;&#x4E4B;&#x7F8E;logo.jpg" alt="image.png"></p>
+<pre><code class="lang-python">
+
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="4-3,AutoGraph的使用规范.html" class="navigation navigation-prev " aria-label="Previous page: 4-3,AutoGraph的使用规范">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="4-5,AutoGraph和tf.Module.html" class="navigation navigation-next " aria-label="Next page: 4-5,AutoGraph和tf.Module">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"4-4,AutoGraph的机制原理","level":"1.19","depth":1,"next":{"title":"4-5,AutoGraph和tf.Module","level":"1.20","depth":1,"path":"4-5,AutoGraph和tf.Module.md","ref":"./4-5,AutoGraph和tf.Module.md","articles":[]},"previous":{"title":"4-3,AutoGraph的使用规范","level":"1.18","depth":1,"path":"4-3,AutoGraph的使用规范.md","ref":"./4-3,AutoGraph的使用规范.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"4-4,AutoGraph的机制原理.md","mtime":"2020-03-22T08:44:43.629Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-22T09:03:39.786Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,1226 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>4-1,张量的结构操作 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="4-2,张量的数学运算.html" />
+    
+    
+    <link rel="prev" href="四、TensorFlow的低阶API.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="一、TensorFlow的建模流程.html">
+            
+                <a href="一、TensorFlow的建模流程.html">
+            
+                    
+                    一、TensorFlow的建模流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="1-1,结构化数据建模流程范例.html">
+            
+                <a href="1-1,结构化数据建模流程范例.html">
+            
+                    
+                    1-1,结构化数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="1-2,图片数据建模流程范例.html">
+            
+                <a href="1-2,图片数据建模流程范例.html">
+            
+                    
+                    1-2,图片数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="1-3,文本数据建模流程范例.html">
+            
+                <a href="1-3,文本数据建模流程范例.html">
+            
+                    
+                    1-3,文本数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="1-4,时间序列数据建模流程范例.html">
+            
+                <a href="1-4,时间序列数据建模流程范例.html">
+            
+                    
+                    1-4,时间序列数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="二、TensorFlow的核心概念.html">
+            
+                <a href="二、TensorFlow的核心概念.html">
+            
+                    
+                    二、TensorFlow的核心概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="2-1,张量数据结构.html">
+            
+                <a href="2-1,张量数据结构.html">
+            
+                    
+                    2-1,张量数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="2-2,三种计算图.html">
+            
+                <a href="2-2,三种计算图.html">
+            
+                    
+                    2-2,三种计算图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="2-3,自动微分机制.html">
+            
+                <a href="2-3,自动微分机制.html">
+            
+                    
+                    2-3,自动微分机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="三、TensorFlow的层次结构.html">
+            
+                <a href="三、TensorFlow的层次结构.html">
+            
+                    
+                    三、TensorFlow的层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="3-1,低阶API示范.html">
+            
+                <a href="3-1,低阶API示范.html">
+            
+                    
+                    3-1,低阶API示范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="3-2,中阶API示范.html">
+            
+                <a href="3-2,中阶API示范.html">
+            
+                    
+                    3-2,中阶API示范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="3-3,高阶API示范.html">
+            
+                <a href="3-3,高阶API示范.html">
+            
+                    
+                    3-3,高阶API示范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="四、TensorFlow的低阶API.html">
+            
+                <a href="四、TensorFlow的低阶API.html">
+            
+                    
+                    四、TensorFlow的低阶API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.16" data-path="4-1,张量的结构操作.html">
+            
+                <a href="4-1,张量的结构操作.html">
+            
+                    
+                    4-1,张量的结构操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="4-2,张量的数学运算.html">
+            
+                <a href="4-2,张量的数学运算.html">
+            
+                    
+                    4-2,张量的数学运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="4-3,AutoGraph的使用规范.html">
+            
+                <a href="4-3,AutoGraph的使用规范.html">
+            
+                    
+                    4-3,AutoGraph的使用规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="4-4,AutoGraph的机制原理.html">
+            
+                <a href="4-4,AutoGraph的机制原理.html">
+            
+                    
+                    4-4,AutoGraph的机制原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="4-5,AutoGraph和tf.Module.html">
+            
+                <a href="4-5,AutoGraph和tf.Module.html">
+            
+                    
+                    4-5,AutoGraph和tf.Module
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" data-path="五、TensorFlow的中阶API.html">
+            
+                <a href="五、TensorFlow的中阶API.html">
+            
+                    
+                    五、TensorFlow的中阶API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" data-path="5-1,数据管道Dataset.html">
+            
+                <a href="5-1,数据管道Dataset.html">
+            
+                    
+                    5-1,数据管道Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" data-path="5-2,特征列feature_column.html">
+            
+                <a href="5-2,特征列feature_column.html">
+            
+                    
+                    5-2,特征列feature_column
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24" data-path="5-3,激活函数activation.html">
+            
+                <a href="5-3,激活函数activation.html">
+            
+                    
+                    5-3,激活函数activation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25" data-path="5-4,模型层layers.html">
+            
+                <a href="5-4,模型层layers.html">
+            
+                    
+                    5-4,模型层layers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26" data-path="5-5,损失函数losses.html">
+            
+                <a href="5-5,损失函数losses.html">
+            
+                    
+                    5-5,损失函数losses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27" data-path="5-6,评估指标metrics.html">
+            
+                <a href="5-6,评估指标metrics.html">
+            
+                    
+                    5-6,评估指标metrics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.28" data-path="5-7,优化器optimizers.html">
+            
+                <a href="5-7,优化器optimizers.html">
+            
+                    
+                    5-7,优化器optimizers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29" data-path="5-8,回调函数callbacks.html">
+            
+                <a href="5-8,回调函数callbacks.html">
+            
+                    
+                    5-8,回调函数callbacks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30" data-path="六、TensorFlow的高阶API.html">
+            
+                <a href="六、TensorFlow的高阶API.html">
+            
+                    
+                    六、TensorFlow的高阶API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31" data-path="6-1,构建模型的3种方法.html">
+            
+                <a href="6-1,构建模型的3种方法.html">
+            
+                    
+                    6-1,构建模型的3种方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.32" data-path="6-2,训练模型的3种方法.html">
+            
+                <a href="6-2,训练模型的3种方法.html">
+            
+                    
+                    6-2,训练模型的3种方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.33" data-path="6-3,使用单GPU训练模型.html">
+            
+                <a href="6-3,使用单GPU训练模型.html">
+            
+                    
+                    6-3,使用单GPU训练模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34" data-path="6-4,使用多GPU训练模型.html">
+            
+                <a href="6-4,使用多GPU训练模型.html">
+            
+                    
+                    6-4,使用多GPU训练模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.35" data-path="6-5,使用TPU训练模型.html">
+            
+                <a href="6-5,使用TPU训练模型.html">
+            
+                    
+                    6-5,使用TPU训练模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.36" data-path="6-6,使用tensorflow-serving部署模型.html">
+            
+                <a href="6-6,使用tensorflow-serving部署模型.html">
+            
+                    
+                    6-6,使用tensorflow-serving部署模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.37" data-path="6-7,使用spark-scala调用tensorflow模型.html">
+            
+                <a href="6-7,使用spark-scala调用tensorflow模型.html">
+            
+                    
+                    6-7,使用spark-scala调用tensorflow模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.38" data-path="后记：一个吃货和一道菜的故事.html">
+            
+                <a href="后记：一个吃货和一道菜的故事.html">
+            
+                    
+                    后记：一个吃货和一道菜的故事
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >4-1,张量的结构操作</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="4-1&#x5F20;&#x91CF;&#x7684;&#x7ED3;&#x6784;&#x64CD;&#x4F5C;">4-1,&#x5F20;&#x91CF;&#x7684;&#x7ED3;&#x6784;&#x64CD;&#x4F5C;</h1>
+<p>&#x5F20;&#x91CF;&#x7684;&#x64CD;&#x4F5C;&#x4E3B;&#x8981;&#x5305;&#x62EC;&#x5F20;&#x91CF;&#x7684;&#x7ED3;&#x6784;&#x64CD;&#x4F5C;&#x548C;&#x5F20;&#x91CF;&#x7684;&#x6570;&#x5B66;&#x8FD0;&#x7B97;&#x3002;</p>
+<p>&#x5F20;&#x91CF;&#x7ED3;&#x6784;&#x64CD;&#x4F5C;&#x8BF8;&#x5982;&#xFF1A;&#x5F20;&#x91CF;&#x521B;&#x5EFA;&#xFF0C;&#x7D22;&#x5F15;&#x5207;&#x7247;&#xFF0C;&#x7EF4;&#x5EA6;&#x53D8;&#x6362;&#xFF0C;&#x5408;&#x5E76;&#x5206;&#x5272;&#x3002;</p>
+<p>&#x5F20;&#x91CF;&#x6570;&#x5B66;&#x8FD0;&#x7B97;&#x4E3B;&#x8981;&#x6709;&#xFF1A;&#x6807;&#x91CF;&#x8FD0;&#x7B97;&#xFF0C;&#x5411;&#x91CF;&#x8FD0;&#x7B97;&#xFF0C;&#x77E9;&#x9635;&#x8FD0;&#x7B97;&#x3002;&#x53E6;&#x5916;&#x6211;&#x4EEC;&#x4F1A;&#x4ECB;&#x7ECD;&#x5F20;&#x91CF;&#x8FD0;&#x7B97;&#x7684;&#x5E7F;&#x64AD;&#x673A;&#x5236;&#x3002;</p>
+<p>&#x672C;&#x7BC7;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x5F20;&#x91CF;&#x7684;&#x7ED3;&#x6784;&#x64CD;&#x4F5C;&#x3002;</p>
+<h3 id="&#x4E00;&#xFF0C;&#x521B;&#x5EFA;&#x5F20;&#x91CF;">&#x4E00;&#xFF0C;&#x521B;&#x5EFA;&#x5F20;&#x91CF;</h3>
+<p>&#x5F20;&#x91CF;&#x521B;&#x5EFA;&#x7684;&#x8BB8;&#x591A;&#x65B9;&#x6CD5;&#x548C;numpy&#x4E2D;&#x521B;&#x5EFA;array&#x7684;&#x65B9;&#x6CD5;&#x5F88;&#x50CF;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+</code></pre>
+<pre><code class="lang-python">a = tf.constant([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],dtype = tf.float32)
+tf.print(a)
+</code></pre>
+<pre><code>[1 2 3]
+</code></pre><pre><code class="lang-python">b = tf.range(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>,delta = <span class="hljs-number">2</span>)
+tf.print(b)
+</code></pre>
+<pre><code>[1 3 5 7 9]
+</code></pre><pre><code class="lang-python">c = tf.linspace(<span class="hljs-number">0.0</span>,<span class="hljs-number">2</span>*<span class="hljs-number">3.14</span>,<span class="hljs-number">100</span>)
+tf.print(c)
+</code></pre>
+<pre><code>[0 0.0634343475 0.126868695 ... 6.15313148 6.21656609 6.28]
+</code></pre><pre><code class="lang-python">d = tf.zeros([<span class="hljs-number">3</span>,<span class="hljs-number">3</span>])
+tf.print(d)
+</code></pre>
+<pre><code>[[0 0 0]
+ [0 0 0]
+ [0 0 0]]
+</code></pre><pre><code class="lang-python">a = tf.ones([<span class="hljs-number">3</span>,<span class="hljs-number">3</span>])
+b = tf.zeros_like(a,dtype= tf.float32)
+tf.print(a)
+tf.print(b)
+</code></pre>
+<pre><code>[[1 1 1]
+ [1 1 1]
+ [1 1 1]]
+[[0 0 0]
+ [0 0 0]
+ [0 0 0]]
+</code></pre><pre><code class="lang-python">b = tf.fill([<span class="hljs-number">3</span>,<span class="hljs-number">2</span>],<span class="hljs-number">5</span>)
+tf.print(b)
+</code></pre>
+<pre><code>[[5 5]
+ [5 5]
+ [5 5]]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x5747;&#x5300;&#x5206;&#x5E03;&#x968F;&#x673A;</span>
+tf.random.set_seed(<span class="hljs-number">1.0</span>)
+a = tf.random.uniform([<span class="hljs-number">5</span>],minval=<span class="hljs-number">0</span>,maxval=<span class="hljs-number">10</span>)
+tf.print(a)
+</code></pre>
+<pre><code>[1.65130854 9.01481247 6.30974197 4.34546089 2.9193902]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x6B63;&#x6001;&#x5206;&#x5E03;&#x968F;&#x673A;</span>
+b = tf.random.normal([<span class="hljs-number">3</span>,<span class="hljs-number">3</span>],mean=<span class="hljs-number">0.0</span>,stddev=<span class="hljs-number">1.0</span>)
+tf.print(b)
+</code></pre>
+<pre><code>[[0.403087884 -1.0880208 -0.0630953535]
+ [1.33655667 0.711760104 -0.489286453]
+ [-0.764221311 -1.03724861 -1.25193381]]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x6B63;&#x6001;&#x5206;&#x5E03;&#x968F;&#x673A;&#xFF0C;&#x5254;&#x9664;2&#x500D;&#x65B9;&#x5DEE;&#x4EE5;&#x5916;&#x6570;&#x636E;&#x91CD;&#x65B0;&#x751F;&#x6210;</span>
+c = tf.random.truncated_normal((<span class="hljs-number">5</span>,<span class="hljs-number">5</span>), mean=<span class="hljs-number">0.0</span>, stddev=<span class="hljs-number">1.0</span>, dtype=tf.float32)
+tf.print(c)
+</code></pre>
+<pre><code>[[-0.457012236 -0.406867266 0.728577733 -0.892977774 -0.369404584]
+ [0.323488563 1.19383323 0.888299048 1.25985599 -1.95951891]
+ [-0.202244401 0.294496894 -0.468728036 1.29494202 1.48142183]
+ [0.0810953453 1.63843894 0.556645 0.977199793 -1.17777884]
+ [1.67368948 0.0647980496 -0.705142677 -0.281972528 0.126546144]]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment"># &#x7279;&#x6B8A;&#x77E9;&#x9635;</span>
+I = tf.eye(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>) <span class="hljs-comment">#&#x5355;&#x4F4D;&#x77E9;&#x9635;</span>
+tf.print(I)
+tf.print(<span class="hljs-string">&quot; &quot;</span>)
+t = tf.linalg.diag([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]) <span class="hljs-comment">#&#x5BF9;&#x89D2;&#x9635;</span>
+tf.print(t)
+</code></pre>
+<pre><code>[[1 0 0]
+ [0 1 0]
+ [0 0 1]]
+
+[[1 0 0]
+ [0 2 0]
+ [0 0 3]]
+</code></pre><pre><code class="lang-python">
+
+</code></pre>
+<h3 id="&#x4E8C;-&#xFF0C;&#x7D22;&#x5F15;&#x5207;&#x7247;">&#x4E8C; &#xFF0C;&#x7D22;&#x5F15;&#x5207;&#x7247;</h3>
+<p>&#x5F20;&#x91CF;&#x7684;&#x7D22;&#x5F15;&#x5207;&#x7247;&#x65B9;&#x5F0F;&#x548C;numpy&#x51E0;&#x4E4E;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;&#x5207;&#x7247;&#x65F6;&#x652F;&#x6301;&#x7F3A;&#x7701;&#x53C2;&#x6570;&#x548C;&#x7701;&#x7565;&#x53F7;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;tf.Variable,&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7D22;&#x5F15;&#x548C;&#x5207;&#x7247;&#x5BF9;&#x90E8;&#x5206;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x63D0;&#x53D6;&#x5F20;&#x91CF;&#x7684;&#x8FDE;&#x7EED;&#x5B50;&#x533A;&#x57DF;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;tf.slice.</p>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E0D;&#x89C4;&#x5219;&#x7684;&#x5207;&#x7247;&#x63D0;&#x53D6;,&#x53EF;&#x4EE5;&#x4F7F;&#x7528;tf.gather,tf.gather_nd,tf.boolean_mask&#x3002;</p>
+<p>tf.boolean_mask&#x529F;&#x80FD;&#x6700;&#x4E3A;&#x5F3A;&#x5927;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;tf.gather,tf.gather_nd&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5E76;&#x4E14;tf.boolean_mask&#x8FD8;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5E03;&#x5C14;&#x7D22;&#x5F15;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x8981;&#x901A;&#x8FC7;&#x4FEE;&#x6539;&#x5F20;&#x91CF;&#x7684;&#x67D0;&#x4E9B;&#x5143;&#x7D20;&#x5F97;&#x5230;&#x65B0;&#x7684;&#x5F20;&#x91CF;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;tf.where&#xFF0C;tf.scatter_nd&#x3002;</p>
+<pre><code class="lang-python">tf.random.set_seed(<span class="hljs-number">3</span>)
+t = tf.random.uniform([<span class="hljs-number">5</span>,<span class="hljs-number">5</span>],minval=<span class="hljs-number">0</span>,maxval=<span class="hljs-number">10</span>,dtype=tf.int32)
+tf.print(t)
+</code></pre>
+<pre><code>[[4 7 4 2 9]
+ [9 1 2 4 7]
+ [7 2 7 4 0]
+ [9 6 9 7 2]
+ [3 7 0 0 3]]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x7B2C;0&#x884C;</span>
+tf.print(t[<span class="hljs-number">0</span>])
+</code></pre>
+<pre><code>[4 7 4 2 9]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x5012;&#x6570;&#x7B2C;&#x4E00;&#x884C;</span>
+tf.print(t[<span class="hljs-number">-1</span>])
+</code></pre>
+<pre><code>[3 7 0 0 3]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x7B2C;1&#x884C;&#x7B2C;3&#x5217;</span>
+tf.print(t[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>])
+tf.print(t[<span class="hljs-number">1</span>][<span class="hljs-number">3</span>])
+</code></pre>
+<pre><code>4
+4
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x7B2C;1&#x884C;&#x81F3;&#x7B2C;3&#x884C;</span>
+tf.print(t[<span class="hljs-number">1</span>:<span class="hljs-number">4</span>,:])
+tf.print(tf.slice(t,[<span class="hljs-number">1</span>,<span class="hljs-number">0</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">5</span>])) <span class="hljs-comment">#tf.slice(input,begin_vector,size_vector)</span>
+</code></pre>
+<pre><code>[[9 1 2 4 7]
+ [7 2 7 4 0]
+ [9 6 9 7 2]]
+[[9 1 2 4 7]
+ [7 2 7 4 0]
+ [9 6 9 7 2]]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x7B2C;1&#x884C;&#x81F3;&#x6700;&#x540E;&#x4E00;&#x884C;&#xFF0C;&#x7B2C;0&#x5217;&#x5230;&#x6700;&#x540E;&#x4E00;&#x5217;&#x6BCF;&#x9694;&#x4E24;&#x5217;&#x53D6;&#x4E00;&#x5217;</span>
+tf.print(t[<span class="hljs-number">1</span>:<span class="hljs-number">4</span>,:<span class="hljs-number">4</span>:<span class="hljs-number">2</span>])
+</code></pre>
+<pre><code>[[9 2]
+ [7 7]
+ [9 9]]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x5BF9;&#x53D8;&#x91CF;&#x6765;&#x8BF4;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7D22;&#x5F15;&#x548C;&#x5207;&#x7247;&#x4FEE;&#x6539;&#x90E8;&#x5206;&#x5143;&#x7D20;</span>
+x = tf.Variable([[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]],dtype = tf.float32)
+x[<span class="hljs-number">1</span>,:].assign(tf.constant([<span class="hljs-number">0.0</span>,<span class="hljs-number">0.0</span>]))
+tf.print(x)
+</code></pre>
+<pre><code>[[1 2]
+ [0 0]]
+</code></pre><pre><code class="lang-python">a = tf.random.uniform([<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>],minval=<span class="hljs-number">0</span>,maxval=<span class="hljs-number">10</span>,dtype=tf.int32)
+tf.print(a)
+</code></pre>
+<pre><code>[[[7 3 9]
+  [9 0 7]
+  [9 6 7]]
+
+ [[1 3 3]
+  [0 8 1]
+  [3 1 0]]
+
+ [[4 0 6]
+  [6 2 2]
+  [7 9 5]]]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x7701;&#x7565;&#x53F7;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x591A;&#x4E2A;&#x5192;&#x53F7;</span>
+tf.print(a[...,<span class="hljs-number">1</span>])
+</code></pre>
+<pre><code>[[3 0 6]
+ [3 8 1]
+ [0 2 9]]
+</code></pre><p>&#x4EE5;&#x4E0A;&#x5207;&#x7247;&#x65B9;&#x5F0F;&#x76F8;&#x5BF9;&#x89C4;&#x5219;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E0D;&#x89C4;&#x5219;&#x7684;&#x5207;&#x7247;&#x63D0;&#x53D6;,&#x53EF;&#x4EE5;&#x4F7F;&#x7528;tf.gather,tf.gather_nd,tf.boolean_mask&#x3002;</p>
+<p>&#x8003;&#x8651;&#x73ED;&#x7EA7;&#x6210;&#x7EE9;&#x518C;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x6709;4&#x4E2A;&#x73ED;&#x7EA7;&#xFF0C;&#x6BCF;&#x4E2A;&#x73ED;&#x7EA7;10&#x4E2A;&#x5B66;&#x751F;&#xFF0C;&#x6BCF;&#x4E2A;&#x5B66;&#x751F;7&#x95E8;&#x79D1;&#x76EE;&#x6210;&#x7EE9;&#x3002;&#x53EF;&#x4EE5;&#x7528;&#x4E00;&#x4E2A;4<em>10</em>7&#x7684;&#x5F20;&#x91CF;&#x6765;&#x8868;&#x793A;&#x3002;</p>
+<pre><code class="lang-python">scores = tf.random.uniform((<span class="hljs-number">4</span>,<span class="hljs-number">10</span>,<span class="hljs-number">7</span>),minval=<span class="hljs-number">0</span>,maxval=<span class="hljs-number">100</span>,dtype=tf.int32)
+tf.print(scores)
+</code></pre>
+<pre><code>[[[52 82 66 ... 17 86 14]
+  [8 36 94 ... 13 78 41]
+  [77 53 51 ... 22 91 56]
+  ...
+  [11 19 26 ... 89 86 68]
+  [60 72 0 ... 11 26 15]
+  [24 99 38 ... 97 44 74]]
+
+ [[79 73 73 ... 35 3 81]
+  [83 36 31 ... 75 38 85]
+  [54 26 67 ... 60 68 98]
+  ...
+  [20 5 18 ... 32 45 3]
+  [72 52 81 ... 88 41 20]
+  [0 21 89 ... 53 10 90]]
+
+ [[52 80 22 ... 29 25 60]
+  [78 71 54 ... 43 98 81]
+  [21 66 53 ... 97 75 77]
+  ...
+  [6 74 3 ... 53 65 43]
+  [98 36 72 ... 33 36 81]
+  [61 78 70 ... 7 59 21]]
+
+ [[56 57 45 ... 23 15 3]
+  [35 8 82 ... 11 59 97]
+  [44 6 99 ... 81 60 27]
+  ...
+  [76 26 35 ... 51 8 17]
+  [33 52 53 ... 78 37 31]
+  [71 27 44 ... 0 52 16]]]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x62BD;&#x53D6;&#x6BCF;&#x4E2A;&#x73ED;&#x7EA7;&#x7B2C;0&#x4E2A;&#x5B66;&#x751F;&#xFF0C;&#x7B2C;5&#x4E2A;&#x5B66;&#x751F;&#xFF0C;&#x7B2C;9&#x4E2A;&#x5B66;&#x751F;&#x7684;&#x5168;&#x90E8;&#x6210;&#x7EE9;</span>
+p = tf.gather(scores,[<span class="hljs-number">0</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>],axis=<span class="hljs-number">1</span>)
+tf.print(p)
+</code></pre>
+<pre><code>[[[52 82 66 ... 17 86 14]
+  [24 80 70 ... 72 63 96]
+  [24 99 38 ... 97 44 74]]
+
+ [[79 73 73 ... 35 3 81]
+  [46 10 94 ... 23 18 92]
+  [0 21 89 ... 53 10 90]]
+
+ [[52 80 22 ... 29 25 60]
+  [19 12 23 ... 87 86 25]
+  [61 78 70 ... 7 59 21]]
+
+ [[56 57 45 ... 23 15 3]
+  [6 41 79 ... 97 43 13]
+  [71 27 44 ... 0 52 16]]]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x62BD;&#x53D6;&#x6BCF;&#x4E2A;&#x73ED;&#x7EA7;&#x7B2C;0&#x4E2A;&#x5B66;&#x751F;&#xFF0C;&#x7B2C;5&#x4E2A;&#x5B66;&#x751F;&#xFF0C;&#x7B2C;9&#x4E2A;&#x5B66;&#x751F;&#x7684;&#x7B2C;1&#x95E8;&#x8BFE;&#x7A0B;&#xFF0C;&#x7B2C;3&#x95E8;&#x8BFE;&#x7A0B;&#xFF0C;&#x7B2C;6&#x95E8;&#x8BFE;&#x7A0B;&#x6210;&#x7EE9;</span>
+q = tf.gather(tf.gather(scores,[<span class="hljs-number">0</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>],axis=<span class="hljs-number">1</span>),[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">6</span>],axis=<span class="hljs-number">2</span>)
+tf.print(q)
+</code></pre>
+<pre><code>[[[82 55 14]
+  [80 46 96]
+  [99 58 74]]
+
+ [[73 48 81]
+  [10 38 92]
+  [21 86 90]]
+
+ [[80 57 60]
+  [12 34 25]
+  [78 71 21]]
+
+ [[57 75 3]
+  [41 47 13]
+  [27 96 16]]]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment"># &#x62BD;&#x53D6;&#x7B2C;0&#x4E2A;&#x73ED;&#x7EA7;&#x7B2C;0&#x4E2A;&#x5B66;&#x751F;&#xFF0C;&#x7B2C;2&#x4E2A;&#x73ED;&#x7EA7;&#x7684;&#x7B2C;4&#x4E2A;&#x5B66;&#x751F;&#xFF0C;&#x7B2C;3&#x4E2A;&#x73ED;&#x7EA7;&#x7684;&#x7B2C;6&#x4E2A;&#x5B66;&#x751F;&#x7684;&#x5168;&#x90E8;&#x6210;&#x7EE9;</span>
+<span class="hljs-comment">#indices&#x7684;&#x957F;&#x5EA6;&#x4E3A;&#x91C7;&#x6837;&#x6837;&#x672C;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x4E3A;&#x91C7;&#x6837;&#x4F4D;&#x7F6E;&#x7684;&#x5750;&#x6807;</span>
+s = tf.gather_nd(scores,indices = [(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>),(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>),(<span class="hljs-number">3</span>,<span class="hljs-number">6</span>)])
+s
+</code></pre>
+<pre><code>&lt;tf.Tensor: shape=(3, 7), dtype=int32, numpy=
+array([[52, 82, 66, 55, 17, 86, 14],
+       [99, 94, 46, 70,  1, 63, 41],
+       [46, 83, 70, 80, 90, 85, 17]], dtype=int32)&gt;
+</code></pre><p>&#x4EE5;&#x4E0A;tf.gather&#x548C;tf.gather_nd&#x7684;&#x529F;&#x80FD;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;tf.boolean_mask&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-comment">#&#x62BD;&#x53D6;&#x6BCF;&#x4E2A;&#x73ED;&#x7EA7;&#x7B2C;0&#x4E2A;&#x5B66;&#x751F;&#xFF0C;&#x7B2C;5&#x4E2A;&#x5B66;&#x751F;&#xFF0C;&#x7B2C;9&#x4E2A;&#x5B66;&#x751F;&#x7684;&#x5168;&#x90E8;&#x6210;&#x7EE9;</span>
+p = tf.boolean_mask(scores,[<span class="hljs-keyword">True</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,
+                            <span class="hljs-keyword">True</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">True</span>],axis=<span class="hljs-number">1</span>)
+tf.print(p)
+</code></pre>
+<pre><code>[[[52 82 66 ... 17 86 14]
+  [24 80 70 ... 72 63 96]
+  [24 99 38 ... 97 44 74]]
+
+ [[79 73 73 ... 35 3 81]
+  [46 10 94 ... 23 18 92]
+  [0 21 89 ... 53 10 90]]
+
+ [[52 80 22 ... 29 25 60]
+  [19 12 23 ... 87 86 25]
+  [61 78 70 ... 7 59 21]]
+
+ [[56 57 45 ... 23 15 3]
+  [6 41 79 ... 97 43 13]
+  [71 27 44 ... 0 52 16]]]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x62BD;&#x53D6;&#x7B2C;0&#x4E2A;&#x73ED;&#x7EA7;&#x7B2C;0&#x4E2A;&#x5B66;&#x751F;&#xFF0C;&#x7B2C;2&#x4E2A;&#x73ED;&#x7EA7;&#x7684;&#x7B2C;4&#x4E2A;&#x5B66;&#x751F;&#xFF0C;&#x7B2C;3&#x4E2A;&#x73ED;&#x7EA7;&#x7684;&#x7B2C;6&#x4E2A;&#x5B66;&#x751F;&#x7684;&#x5168;&#x90E8;&#x6210;&#x7EE9;</span>
+s = tf.boolean_mask(scores,
+    [[<span class="hljs-keyword">True</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>],
+     [<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>],
+     [<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">True</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>],
+     [<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">True</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>,<span class="hljs-keyword">False</span>]])
+tf.print(s)
+</code></pre>
+<pre><code>[[52 82 66 ... 17 86 14]
+ [99 94 46 ... 1 63 41]
+ [46 83 70 ... 90 85 17]]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x5229;&#x7528;tf.boolean_mask&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5E03;&#x5C14;&#x7D22;&#x5F15;</span>
+
+<span class="hljs-comment">#&#x627E;&#x5230;&#x77E9;&#x9635;&#x4E2D;&#x5C0F;&#x4E8E;0&#x7684;&#x5143;&#x7D20;</span>
+c = tf.constant([[<span class="hljs-number">-1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">-1</span>],[<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">-2</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">-3</span>,<span class="hljs-number">3</span>]],dtype=tf.float32)
+tf.print(c,<span class="hljs-string">&quot;\n&quot;</span>)
+
+tf.print(tf.boolean_mask(c,c&lt;<span class="hljs-number">0</span>),<span class="hljs-string">&quot;\n&quot;</span>) 
+tf.print(c[c&lt;<span class="hljs-number">0</span>]) <span class="hljs-comment">#&#x5E03;&#x5C14;&#x7D22;&#x5F15;&#xFF0C;&#x4E3A;boolean_mask&#x7684;&#x8BED;&#x6CD5;&#x7CD6;&#x5F62;&#x5F0F;</span>
+</code></pre>
+<pre><code>[[-1 1 -1]
+ [2 2 -2]
+ [3 -3 3]] 
+
+[-1 -1 -2 -3] 
+
+[-1 -1 -2 -3]
+</code></pre><pre><code class="lang-python">
+
+</code></pre>
+<p>&#x4EE5;&#x4E0A;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x4EC5;&#x80FD;&#x63D0;&#x53D6;&#x5F20;&#x91CF;&#x7684;&#x90E8;&#x5206;&#x5143;&#x7D20;&#x503C;&#xFF0C;&#x4F46;&#x4E0D;&#x80FD;&#x66F4;&#x6539;&#x5F20;&#x91CF;&#x7684;&#x90E8;&#x5206;&#x5143;&#x7D20;&#x503C;&#x5F97;&#x5230;&#x65B0;&#x7684;&#x5F20;&#x91CF;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x8981;&#x901A;&#x8FC7;&#x4FEE;&#x6539;&#x5F20;&#x91CF;&#x7684;&#x90E8;&#x5206;&#x5143;&#x7D20;&#x503C;&#x5F97;&#x5230;&#x65B0;&#x7684;&#x5F20;&#x91CF;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;tf.where&#x548C;tf.scatter_nd&#x3002;</p>
+<p>tf.where&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;if&#x7684;&#x5F20;&#x91CF;&#x7248;&#x672C;&#xFF0C;&#x6B64;&#x5916;&#x5B83;&#x8FD8;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x627E;&#x5230;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#x7684;&#x4F4D;&#x7F6E;&#x5750;&#x6807;&#x3002;</p>
+<p>tf.scatter_nd&#x7684;&#x4F5C;&#x7528;&#x548C;tf.gather_nd&#x6709;&#x4E9B;&#x76F8;&#x53CD;&#xFF0C;tf.gather_nd&#x7528;&#x4E8E;&#x6536;&#x96C6;&#x5F20;&#x91CF;&#x7684;&#x7ED9;&#x5B9A;&#x4F4D;&#x7F6E;&#x7684;&#x5143;&#x7D20;&#xFF0C;</p>
+<p>&#x800C;tf.scatter_nd&#x53EF;&#x4EE5;&#x5C06;&#x67D0;&#x4E9B;&#x503C;&#x63D2;&#x5165;&#x5230;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;shape&#x7684;&#x5168;0&#x7684;&#x5F20;&#x91CF;&#x7684;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x5904;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-comment">#&#x627E;&#x5230;&#x5F20;&#x91CF;&#x4E2D;&#x5C0F;&#x4E8E;0&#x7684;&#x5143;&#x7D20;,&#x5C06;&#x5176;&#x6362;&#x6210;np.nan&#x5F97;&#x5230;&#x65B0;&#x7684;&#x5F20;&#x91CF;</span>
+<span class="hljs-comment">#tf.where&#x548C;np.where&#x4F5C;&#x7528;&#x7C7B;&#x4F3C;&#xFF0C;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;if&#x7684;&#x5F20;&#x91CF;&#x7248;&#x672C;</span>
+
+c = tf.constant([[<span class="hljs-number">-1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">-1</span>],[<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">-2</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">-3</span>,<span class="hljs-number">3</span>]],dtype=tf.float32)
+d = tf.where(c&lt;<span class="hljs-number">0</span>,tf.fill(c.shape,np.nan),c) 
+d
+</code></pre>
+<pre><code>&lt;tf.Tensor: shape=(3, 3), dtype=float32, numpy=
+array([[nan,  1., nan],
+       [ 2.,  2., nan],
+       [ 3., nan,  3.]], dtype=float32)&gt;
+</code></pre><pre><code class="lang-python">
+
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-comment">#&#x5982;&#x679C;where&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5C06;&#x8FD4;&#x56DE;&#x6240;&#x6709;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;&#x4F4D;&#x7F6E;&#x5750;&#x6807;</span>
+indices = tf.where(c&lt;<span class="hljs-number">0</span>)
+indices
+</code></pre>
+<pre><code>&lt;tf.Tensor: shape=(4, 2), dtype=int64, numpy=
+array([[0, 0],
+       [0, 2],
+       [1, 2],
+       [2, 1]])&gt;
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#&#x5C06;&#x5F20;&#x91CF;&#x7684;&#x7B2C;[0,0]&#x548C;[2,1]&#x4E24;&#x4E2A;&#x4F4D;&#x7F6E;&#x5143;&#x7D20;&#x66FF;&#x6362;&#x4E3A;0&#x5F97;&#x5230;&#x65B0;&#x7684;&#x5F20;&#x91CF;</span>
+d = c - tf.scatter_nd([[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],[<span class="hljs-number">2</span>,<span class="hljs-number">1</span>]],[c[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],c[<span class="hljs-number">2</span>,<span class="hljs-number">1</span>]],c.shape)
+d
+</code></pre>
+<pre><code>&lt;tf.Tensor: shape=(3, 3), dtype=float32, numpy=
+array([[ 0.,  1., -1.],
+       [ 2.,  2., -2.],
+       [ 3.,  0.,  3.]], dtype=float32)&gt;
+</code></pre><pre><code class="lang-python"><span class="hljs-comment">#scatter_nd&#x7684;&#x4F5C;&#x7528;&#x548C;gather_nd&#x6709;&#x4E9B;&#x76F8;&#x53CD;</span>
+<span class="hljs-comment">#&#x53EF;&#x4EE5;&#x5C06;&#x67D0;&#x4E9B;&#x503C;&#x63D2;&#x5165;&#x5230;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;shape&#x7684;&#x5168;0&#x7684;&#x5F20;&#x91CF;&#x7684;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x5904;&#x3002;</span>
+indices = tf.where(c&lt;<span class="hljs-number">0</span>)
+tf.scatter_nd(indices,tf.gather_nd(c,indices),c.shape)
+</code></pre>
+<pre><code>&lt;tf.Tensor: shape=(3, 3), dtype=float32, numpy=
+array([[-1.,  0., -1.],
+       [ 0.,  0., -2.],
+       [ 0., -3.,  0.]], dtype=float32)&gt;
+</code></pre><pre><code class="lang-python">
+
+</code></pre>
+<h3 id="&#x4E09;&#xFF0C;&#x7EF4;&#x5EA6;&#x53D8;&#x6362;">&#x4E09;&#xFF0C;&#x7EF4;&#x5EA6;&#x53D8;&#x6362;</h3>
+<p>&#x7EF4;&#x5EA6;&#x53D8;&#x6362;&#x76F8;&#x5173;&#x51FD;&#x6570;&#x4E3B;&#x8981;&#x6709; tf.reshape, tf.squeeze, tf.expand_dims, tf.transpose.</p>
+<p>tf.reshape &#x53EF;&#x4EE5;&#x6539;&#x53D8;&#x5F20;&#x91CF;&#x7684;&#x5F62;&#x72B6;&#x3002;</p>
+<p>tf.squeeze &#x53EF;&#x4EE5;&#x51CF;&#x5C11;&#x7EF4;&#x5EA6;&#x3002;</p>
+<p>tf.expand_dims &#x53EF;&#x4EE5;&#x589E;&#x52A0;&#x7EF4;&#x5EA6;&#x3002;</p>
+<p>tf.transpose &#x53EF;&#x4EE5;&#x4EA4;&#x6362;&#x7EF4;&#x5EA6;&#x3002;</p>
+<p>tf.reshape&#x53EF;&#x4EE5;&#x6539;&#x53D8;&#x5F20;&#x91CF;&#x7684;&#x5F62;&#x72B6;&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x672C;&#x8D28;&#x4E0A;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x5F20;&#x91CF;&#x5143;&#x7D20;&#x7684;&#x5B58;&#x50A8;&#x987A;&#x5E8F;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x8BE5;&#x64CD;&#x4F5C;&#x5B9E;&#x9645;&#x4E0A;&#x975E;&#x5E38;&#x8FC5;&#x901F;&#xFF0C;&#x5E76;&#x4E14;&#x662F;&#x53EF;&#x9006;&#x7684;&#x3002;</p>
+<pre><code class="lang-python">a = tf.random.uniform(shape=[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>],
+                      minval=<span class="hljs-number">0</span>,maxval=<span class="hljs-number">255</span>,dtype=tf.int32)
+tf.print(a.shape)
+tf.print(a)
+</code></pre>
+<pre><code>TensorShape([1, 3, 3, 2])
+[[[[135 178]
+   [26 116]
+   [29 224]]
+
+  [[179 219]
+   [153 209]
+   [111 215]]
+
+  [[39 7]
+   [138 129]
+   [59 205]]]]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment"># &#x6539;&#x6210; &#xFF08;3,6&#xFF09;&#x5F62;&#x72B6;&#x7684;&#x5F20;&#x91CF;</span>
+b = tf.reshape(a,[<span class="hljs-number">3</span>,<span class="hljs-number">6</span>])
+tf.print(b.shape)
+tf.print(b)
+</code></pre>
+<pre><code>TensorShape([3, 6])
+[[135 178 26 116 29 224]
+ [179 219 153 209 111 215]
+ [39 7 138 129 59 205]]
+</code></pre><pre><code class="lang-python"><span class="hljs-comment"># &#x6539;&#x56DE;&#x6210; [1,3,3,2] &#x5F62;&#x72B6;&#x7684;&#x5F20;&#x91CF;</span>
+c = tf.reshape(b,[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>])
+tf.print(c)
+</code></pre>
+<pre><code>[[[[135 178]
+   [26 116]
+   [29 224]]
+
+  [[179 219]
+   [153 209]
+   [111 215]]
+
+  [[39 7]
+   [138 129]
+   [59 205]]]]
+</code></pre><pre><code class="lang-python">
+
+</code></pre>
+<p>&#x5982;&#x679C;&#x5F20;&#x91CF;&#x5728;&#x67D0;&#x4E2A;&#x7EF4;&#x5EA6;&#x4E0A;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5229;&#x7528;tf.squeeze&#x53EF;&#x4EE5;&#x6D88;&#x9664;&#x8FD9;&#x4E2A;&#x7EF4;&#x5EA6;&#x3002;</p>
+<p>&#x548C;tf.reshape&#x76F8;&#x4F3C;&#xFF0C;&#x5B83;&#x672C;&#x8D28;&#x4E0A;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x5F20;&#x91CF;&#x5143;&#x7D20;&#x7684;&#x5B58;&#x50A8;&#x987A;&#x5E8F;&#x3002;</p>
+<p>&#x5F20;&#x91CF;&#x7684;&#x5404;&#x4E2A;&#x5143;&#x7D20;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x662F;&#x7EBF;&#x6027;&#x5B58;&#x50A8;&#x7684;&#xFF0C;&#x5176;&#x4E00;&#x822C;&#x89C4;&#x5F8B;&#x662F;&#xFF0C;&#x540C;&#x4E00;&#x5C42;&#x7EA7;&#x4E2D;&#x7684;&#x76F8;&#x90BB;&#x5143;&#x7D20;&#x7684;&#x7269;&#x7406;&#x5730;&#x5740;&#x4E5F;&#x76F8;&#x90BB;&#x3002;</p>
+<pre><code class="lang-python">s = tf.squeeze(a)
+tf.print(s.shape)
+tf.print(s)
+</code></pre>
+<pre><code>TensorShape([3, 3, 2])
+[[[135 178]
+  [26 116]
+  [29 224]]
+
+ [[179 219]
+  [153 209]
+  [111 215]]
+
+ [[39 7]
+  [138 129]
+  [59 205]]]
+</code></pre><pre><code class="lang-python">d = tf.expand_dims(s,axis=<span class="hljs-number">0</span>) <span class="hljs-comment">#&#x5728;&#x7B2C;0&#x7EF4;&#x63D2;&#x5165;&#x957F;&#x5EA6;&#x4E3A;1&#x7684;&#x4E00;&#x4E2A;&#x7EF4;&#x5EA6;</span>
+d
+</code></pre>
+<pre><code>&lt;tf.Tensor: shape=(1, 3, 3, 2), dtype=int32, numpy=
+array([[[[135, 178],
+         [ 26, 116],
+         [ 29, 224]],
+
+        [[179, 219],
+         [153, 209],
+         [111, 215]],
+
+        [[ 39,   7],
+         [138, 129],
+         [ 59, 205]]]], dtype=int32)&gt;
+</code></pre><p>tf.transpose&#x53EF;&#x4EE5;&#x4EA4;&#x6362;&#x5F20;&#x91CF;&#x7684;&#x7EF4;&#x5EA6;&#xFF0C;&#x4E0E;tf.reshape&#x4E0D;&#x540C;&#xFF0C;&#x5B83;&#x4F1A;&#x6539;&#x53D8;&#x5F20;&#x91CF;&#x5143;&#x7D20;&#x7684;&#x5B58;&#x50A8;&#x987A;&#x5E8F;&#x3002;</p>
+<p>tf.transpose&#x5E38;&#x7528;&#x4E8E;&#x56FE;&#x7247;&#x5B58;&#x50A8;&#x683C;&#x5F0F;&#x7684;&#x53D8;&#x6362;&#x4E0A;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># Batch,Height,Width,Channel</span>
+a = tf.random.uniform(shape=[<span class="hljs-number">100</span>,<span class="hljs-number">600</span>,<span class="hljs-number">600</span>,<span class="hljs-number">4</span>],minval=<span class="hljs-number">0</span>,maxval=<span class="hljs-number">255</span>,dtype=tf.int32)
+tf.print(a.shape)
+
+<span class="hljs-comment"># &#x8F6C;&#x6362;&#x6210; Channel,Height,Width,Batch</span>
+s= tf.transpose(a,perm=[<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>])
+tf.print(s.shape)
+</code></pre>
+<pre><code>TensorShape([100, 600, 600, 4])
+TensorShape([4, 600, 600, 100])
+</code></pre><pre><code class="lang-python">
+
+</code></pre>
+<h3 id="&#x56DB;&#xFF0C;&#x5408;&#x5E76;&#x5206;&#x5272;">&#x56DB;&#xFF0C;&#x5408;&#x5E76;&#x5206;&#x5272;</h3>
+<p>&#x548C;numpy&#x7C7B;&#x4F3C;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;tf.concat&#x548C;tf.stack&#x65B9;&#x6CD5;&#x5BF9;&#x591A;&#x4E2A;&#x5F20;&#x91CF;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;tf.split&#x65B9;&#x6CD5;&#x628A;&#x4E00;&#x4E2A;&#x5F20;&#x91CF;&#x5206;&#x5272;&#x6210;&#x591A;&#x4E2A;&#x5F20;&#x91CF;&#x3002;</p>
+<p>tf.concat&#x548C;tf.stack&#x6709;&#x7565;&#x5FAE;&#x7684;&#x533A;&#x522B;&#xFF0C;tf.concat&#x662F;&#x8FDE;&#x63A5;&#xFF0C;&#x4E0D;&#x4F1A;&#x589E;&#x52A0;&#x7EF4;&#x5EA6;&#xFF0C;&#x800C;tf.stack&#x662F;&#x5806;&#x53E0;&#xFF0C;&#x4F1A;&#x589E;&#x52A0;&#x7EF4;&#x5EA6;&#x3002;</p>
+<pre><code class="lang-python">a = tf.constant([[<span class="hljs-number">1.0</span>,<span class="hljs-number">2.0</span>],[<span class="hljs-number">3.0</span>,<span class="hljs-number">4.0</span>]])
+b = tf.constant([[<span class="hljs-number">5.0</span>,<span class="hljs-number">6.0</span>],[<span class="hljs-number">7.0</span>,<span class="hljs-number">8.0</span>]])
+c = tf.constant([[<span class="hljs-number">9.0</span>,<span class="hljs-number">10.0</span>],[<span class="hljs-number">11.0</span>,<span class="hljs-number">12.0</span>]])
+
+tf.concat([a,b,c],axis = <span class="hljs-number">0</span>)
+</code></pre>
+<pre><code>&lt;tf.Tensor: shape=(6, 2), dtype=float32, numpy=
+array([[ 1.,  2.],
+       [ 3.,  4.],
+       [ 5.,  6.],
+       [ 7.,  8.],
+       [ 9., 10.],
+       [11., 12.]], dtype=float32)&gt;
+</code></pre><pre><code class="lang-python">tf.concat([a,b,c],axis = <span class="hljs-number">1</span>)
+</code></pre>
+<pre><code>&lt;tf.Tensor: shape=(2, 6), dtype=float32, numpy=
+array([[ 1.,  2.,  5.,  6.,  9., 10.],
+       [ 3.,  4.,  7.,  8., 11., 12.]], dtype=float32)&gt;
+</code></pre><pre><code class="lang-python">tf.stack([a,b,c])
+</code></pre>
+<pre><code>&lt;tf.Tensor: shape=(3, 2, 2), dtype=float32, numpy=
+array([[[ 1.,  2.],
+        [ 3.,  4.]],
+
+       [[ 5.,  6.],
+        [ 7.,  8.]],
+
+       [[ 9., 10.],
+        [11., 12.]]], dtype=float32)&gt;
+</code></pre><pre><code class="lang-python">tf.stack([a,b,c],axis=<span class="hljs-number">1</span>)
+</code></pre>
+<pre><code>&lt;tf.Tensor: shape=(2, 3, 2), dtype=float32, numpy=
+array([[[ 1.,  2.],
+        [ 5.,  6.],
+        [ 9., 10.]],
+
+       [[ 3.,  4.],
+        [ 7.,  8.],
+        [11., 12.]]], dtype=float32)&gt;
+</code></pre><pre><code class="lang-python">a = tf.constant([[<span class="hljs-number">1.0</span>,<span class="hljs-number">2.0</span>],[<span class="hljs-number">3.0</span>,<span class="hljs-number">4.0</span>]])
+b = tf.constant([[<span class="hljs-number">5.0</span>,<span class="hljs-number">6.0</span>],[<span class="hljs-number">7.0</span>,<span class="hljs-number">8.0</span>]])
+c = tf.constant([[<span class="hljs-number">9.0</span>,<span class="hljs-number">10.0</span>],[<span class="hljs-number">11.0</span>,<span class="hljs-number">12.0</span>]])
+
+c = tf.concat([a,b,c],axis = <span class="hljs-number">0</span>)
+</code></pre>
+<p>tf.split&#x662F;tf.concat&#x7684;&#x9006;&#x8FD0;&#x7B97;&#xFF0C;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x5206;&#x5272;&#x4EFD;&#x6570;&#x5E73;&#x5747;&#x5206;&#x5272;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6307;&#x5B9A;&#x6BCF;&#x4EFD;&#x7684;&#x8BB0;&#x5F55;&#x6570;&#x91CF;&#x8FDB;&#x884C;&#x5206;&#x5272;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-comment">#tf.split(value,num_or_size_splits,axis)</span>
+tf.split(c,<span class="hljs-number">3</span>,axis = <span class="hljs-number">0</span>)  <span class="hljs-comment">#&#x6307;&#x5B9A;&#x5206;&#x5272;&#x4EFD;&#x6570;&#xFF0C;&#x5E73;&#x5747;&#x5206;&#x5272;</span>
+</code></pre>
+<pre><code>[&lt;tf.Tensor: shape=(2, 2), dtype=float32, numpy=
+ array([[1., 2.],
+        [3., 4.]], dtype=float32)&gt;,
+ &lt;tf.Tensor: shape=(2, 2), dtype=float32, numpy=
+ array([[5., 6.],
+        [7., 8.]], dtype=float32)&gt;,
+ &lt;tf.Tensor: shape=(2, 2), dtype=float32, numpy=
+ array([[ 9., 10.],
+        [11., 12.]], dtype=float32)&gt;]
+</code></pre><pre><code class="lang-python">tf.split(c,[<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>],axis = <span class="hljs-number">0</span>) <span class="hljs-comment">#&#x6307;&#x5B9A;&#x6BCF;&#x4EFD;&#x7684;&#x8BB0;&#x5F55;&#x6570;&#x91CF;</span>
+</code></pre>
+<pre><code>[&lt;tf.Tensor: shape=(2, 2), dtype=float32, numpy=
+ array([[1., 2.],
+        [3., 4.]], dtype=float32)&gt;,
+ &lt;tf.Tensor: shape=(2, 2), dtype=float32, numpy=
+ array([[5., 6.],
+        [7., 8.]], dtype=float32)&gt;,
+ &lt;tf.Tensor: shape=(2, 2), dtype=float32, numpy=
+ array([[ 9., 10.],
+        [11., 12.]], dtype=float32)&gt;]
+</code></pre><pre><code class="lang-python">
+
+</code></pre>
+<p>&#x5982;&#x679C;&#x5BF9;&#x672C;&#x4E66;&#x5185;&#x5BB9;&#x7406;&#x89E3;&#x4E0A;&#x6709;&#x9700;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x548C;&#x4F5C;&#x8005;&#x4EA4;&#x6D41;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6B22;&#x8FCE;&#x5728;&#x516C;&#x4F17;&#x53F7;&quot;Python&#x4E0E;&#x7B97;&#x6CD5;&#x4E4B;&#x7F8E;&quot;&#x4E0B;&#x7559;&#x8A00;&#x3002;&#x4F5C;&#x8005;&#x65F6;&#x95F4;&#x548C;&#x7CBE;&#x529B;&#x6709;&#x9650;&#xFF0C;&#x4F1A;&#x914C;&#x60C5;&#x4E88;&#x4EE5;&#x56DE;&#x590D;&#x3002;</p>
+<p><img src="data/Python&#x4E0E;&#x7B97;&#x6CD5;&#x4E4B;&#x7F8E;logo.jpg" alt="image.png"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="四、TensorFlow的低阶API.html" class="navigation navigation-prev " aria-label="Previous page: 四、TensorFlow的低阶API">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="4-2,张量的数学运算.html" class="navigation navigation-next " aria-label="Next page: 4-2,张量的数学运算">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"4-1,张量的结构操作","level":"1.16","depth":1,"next":{"title":"4-2,张量的数学运算","level":"1.17","depth":1,"path":"4-2,张量的数学运算.md","ref":"./4-2,张量的数学运算.md","articles":[]},"previous":{"title":"四、TensorFlow的低阶API","level":"1.15","depth":1,"path":"四、TensorFlow的低阶API.md","ref":"四、TensorFlow的低阶API.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"4-1,张量的结构操作.md","mtime":"2020-03-22T08:44:43.629Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-22T09:03:39.786Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

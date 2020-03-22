@@ -1,0 +1,969 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1-2,图片数据建模流程范例 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="1-3,文本数据建模流程范例.html" />
+    
+    
+    <link rel="prev" href="1-1,结构化数据建模流程范例.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="一、TensorFlow的建模流程.html">
+            
+                <a href="一、TensorFlow的建模流程.html">
+            
+                    
+                    一、TensorFlow的建模流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="1-1,结构化数据建模流程范例.html">
+            
+                <a href="1-1,结构化数据建模流程范例.html">
+            
+                    
+                    1-1,结构化数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="1-2,图片数据建模流程范例.html">
+            
+                <a href="1-2,图片数据建模流程范例.html">
+            
+                    
+                    1-2,图片数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="1-3,文本数据建模流程范例.html">
+            
+                <a href="1-3,文本数据建模流程范例.html">
+            
+                    
+                    1-3,文本数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="1-4,时间序列数据建模流程范例.html">
+            
+                <a href="1-4,时间序列数据建模流程范例.html">
+            
+                    
+                    1-4,时间序列数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="二、TensorFlow的核心概念.html">
+            
+                <a href="二、TensorFlow的核心概念.html">
+            
+                    
+                    二、TensorFlow的核心概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="2-1,张量数据结构.html">
+            
+                <a href="2-1,张量数据结构.html">
+            
+                    
+                    2-1,张量数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="2-2,三种计算图.html">
+            
+                <a href="2-2,三种计算图.html">
+            
+                    
+                    2-2,三种计算图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="2-3,自动微分机制.html">
+            
+                <a href="2-3,自动微分机制.html">
+            
+                    
+                    2-3,自动微分机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="三、TensorFlow的层次结构.html">
+            
+                <a href="三、TensorFlow的层次结构.html">
+            
+                    
+                    三、TensorFlow的层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="3-1,低阶API示范.html">
+            
+                <a href="3-1,低阶API示范.html">
+            
+                    
+                    3-1,低阶API示范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="3-2,中阶API示范.html">
+            
+                <a href="3-2,中阶API示范.html">
+            
+                    
+                    3-2,中阶API示范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="3-3,高阶API示范.html">
+            
+                <a href="3-3,高阶API示范.html">
+            
+                    
+                    3-3,高阶API示范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="四、TensorFlow的低阶API.html">
+            
+                <a href="四、TensorFlow的低阶API.html">
+            
+                    
+                    四、TensorFlow的低阶API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="4-1,张量的结构操作.html">
+            
+                <a href="4-1,张量的结构操作.html">
+            
+                    
+                    4-1,张量的结构操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="4-2,张量的数学运算.html">
+            
+                <a href="4-2,张量的数学运算.html">
+            
+                    
+                    4-2,张量的数学运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="4-3,AutoGraph的使用规范.html">
+            
+                <a href="4-3,AutoGraph的使用规范.html">
+            
+                    
+                    4-3,AutoGraph的使用规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="4-4,AutoGraph的机制原理.html">
+            
+                <a href="4-4,AutoGraph的机制原理.html">
+            
+                    
+                    4-4,AutoGraph的机制原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="4-5,AutoGraph和tf.Module.html">
+            
+                <a href="4-5,AutoGraph和tf.Module.html">
+            
+                    
+                    4-5,AutoGraph和tf.Module
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" data-path="五、TensorFlow的中阶API.html">
+            
+                <a href="五、TensorFlow的中阶API.html">
+            
+                    
+                    五、TensorFlow的中阶API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" data-path="5-1,数据管道Dataset.html">
+            
+                <a href="5-1,数据管道Dataset.html">
+            
+                    
+                    5-1,数据管道Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" data-path="5-2,特征列feature_column.html">
+            
+                <a href="5-2,特征列feature_column.html">
+            
+                    
+                    5-2,特征列feature_column
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24" data-path="5-3,激活函数activation.html">
+            
+                <a href="5-3,激活函数activation.html">
+            
+                    
+                    5-3,激活函数activation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25" data-path="5-4,模型层layers.html">
+            
+                <a href="5-4,模型层layers.html">
+            
+                    
+                    5-4,模型层layers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26" data-path="5-5,损失函数losses.html">
+            
+                <a href="5-5,损失函数losses.html">
+            
+                    
+                    5-5,损失函数losses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27" data-path="5-6,评估指标metrics.html">
+            
+                <a href="5-6,评估指标metrics.html">
+            
+                    
+                    5-6,评估指标metrics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.28" data-path="5-7,优化器optimizers.html">
+            
+                <a href="5-7,优化器optimizers.html">
+            
+                    
+                    5-7,优化器optimizers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29" data-path="5-8,回调函数callbacks.html">
+            
+                <a href="5-8,回调函数callbacks.html">
+            
+                    
+                    5-8,回调函数callbacks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30" data-path="六、TensorFlow的高阶API.html">
+            
+                <a href="六、TensorFlow的高阶API.html">
+            
+                    
+                    六、TensorFlow的高阶API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31" data-path="6-1,构建模型的3种方法.html">
+            
+                <a href="6-1,构建模型的3种方法.html">
+            
+                    
+                    6-1,构建模型的3种方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.32" data-path="6-2,训练模型的3种方法.html">
+            
+                <a href="6-2,训练模型的3种方法.html">
+            
+                    
+                    6-2,训练模型的3种方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.33" data-path="6-3,使用单GPU训练模型.html">
+            
+                <a href="6-3,使用单GPU训练模型.html">
+            
+                    
+                    6-3,使用单GPU训练模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34" data-path="6-4,使用多GPU训练模型.html">
+            
+                <a href="6-4,使用多GPU训练模型.html">
+            
+                    
+                    6-4,使用多GPU训练模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.35" data-path="6-5,使用TPU训练模型.html">
+            
+                <a href="6-5,使用TPU训练模型.html">
+            
+                    
+                    6-5,使用TPU训练模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.36" data-path="6-6,使用tensorflow-serving部署模型.html">
+            
+                <a href="6-6,使用tensorflow-serving部署模型.html">
+            
+                    
+                    6-6,使用tensorflow-serving部署模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.37" data-path="6-7,使用spark-scala调用tensorflow模型.html">
+            
+                <a href="6-7,使用spark-scala调用tensorflow模型.html">
+            
+                    
+                    6-7,使用spark-scala调用tensorflow模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.38" data-path="后记：一个吃货和一道菜的故事.html">
+            
+                <a href="后记：一个吃货和一道菜的故事.html">
+            
+                    
+                    后记：一个吃货和一道菜的故事
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >1-2,图片数据建模流程范例</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="1-2&#x56FE;&#x7247;&#x6570;&#x636E;&#x5EFA;&#x6A21;&#x6D41;&#x7A0B;&#x8303;&#x4F8B;">1-2,&#x56FE;&#x7247;&#x6570;&#x636E;&#x5EFA;&#x6A21;&#x6D41;&#x7A0B;&#x8303;&#x4F8B;</h1>
+<h3 id="&#x4E00;&#xFF0C;&#x51C6;&#x5907;&#x6570;&#x636E;">&#x4E00;&#xFF0C;&#x51C6;&#x5907;&#x6570;&#x636E;</h3>
+<p>cifar2&#x6570;&#x636E;&#x96C6;&#x4E3A;cifar10&#x6570;&#x636E;&#x96C6;&#x7684;&#x5B50;&#x96C6;&#xFF0C;&#x53EA;&#x5305;&#x62EC;&#x524D;&#x4E24;&#x79CD;&#x7C7B;&#x522B;airplane&#x548C;automobile&#x3002;</p>
+<p>&#x8BAD;&#x7EC3;&#x96C6;&#x6709;airplane&#x548C;automobile&#x56FE;&#x7247;&#x5404;5000&#x5F20;&#xFF0C;&#x6D4B;&#x8BD5;&#x96C6;&#x6709;airplane&#x548C;automobile&#x56FE;&#x7247;&#x5404;1000&#x5F20;&#x3002;</p>
+<p>cifar2&#x4EFB;&#x52A1;&#x7684;&#x76EE;&#x6807;&#x662F;&#x8BAD;&#x7EC3;&#x4E00;&#x4E2A;&#x6A21;&#x578B;&#x6765;&#x5BF9;&#x98DE;&#x673A;airplane&#x548C;&#x673A;&#x52A8;&#x8F66;automobile&#x4E24;&#x79CD;&#x56FE;&#x7247;&#x8FDB;&#x884C;&#x5206;&#x7C7B;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x51C6;&#x5907;&#x7684;Cifar2&#x6570;&#x636E;&#x96C6;&#x7684;&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x3002;</p>
+<p><img src="data/cifar2.jpg" alt=""></p>
+<pre><code class="lang-python">
+
+</code></pre>
+<p>&#x5728;tensorflow&#x4E2D;&#x51C6;&#x5907;&#x56FE;&#x7247;&#x6570;&#x636E;&#x7684;&#x5E38;&#x7528;&#x65B9;&#x6848;&#x6709;&#x4E24;&#x79CD;&#xFF0C;&#x7B2C;&#x4E00;&#x79CD;&#x662F;&#x4F7F;&#x7528;tf.keras&#x4E2D;&#x7684;ImageDataGenerator&#x5DE5;&#x5177;&#x6784;&#x5EFA;&#x56FE;&#x7247;&#x6570;&#x636E;&#x751F;&#x6210;&#x5668;&#x3002;</p>
+<p>&#x7B2C;&#x4E8C;&#x79CD;&#x662F;&#x4F7F;&#x7528;tf.data.Dataset&#x642D;&#x914D;tf.image&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x56FE;&#x7247;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x6784;&#x5EFA;&#x6570;&#x636E;&#x7BA1;&#x9053;&#x3002;</p>
+<p>&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x66F4;&#x4E3A;&#x7B80;&#x5355;&#xFF0C;&#x5176;&#x4F7F;&#x7528;&#x8303;&#x4F8B;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x4EE5;&#x4E0B;&#x6587;&#x7AE0;&#x3002;</p>
+<p><a href="https://zhuanlan.zhihu.com/p/67466552" target="_blank">https://zhuanlan.zhihu.com/p/67466552</a></p>
+<p>&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6CD5;&#x662F;TensorFlow&#x7684;&#x539F;&#x751F;&#x65B9;&#x6CD5;&#xFF0C;&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#xFF0C;&#x4F7F;&#x7528;&#x5F97;&#x5F53;&#x7684;&#x8BDD;&#x4E5F;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x66F4;&#x597D;&#x7684;&#x6027;&#x80FD;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x6B64;&#x5904;&#x4ECB;&#x7ECD;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6CD5;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf 
+<span class="hljs-keyword">from</span> tensorflow.keras <span class="hljs-keyword">import</span> datasets,layers,models
+
+BATCH_SIZE = <span class="hljs-number">100</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">load_image</span><span class="hljs-params">(img_path,size = <span class="hljs-params">(<span class="hljs-number">32</span>,<span class="hljs-number">32</span>)</span>)</span>:</span>
+    label = tf.constant(<span class="hljs-number">1</span>,tf.int8) <span class="hljs-keyword">if</span> tf.strings.regex_full_match(img_path,<span class="hljs-string">&quot;.*/automobile/.*&quot;</span>) \
+            <span class="hljs-keyword">else</span> tf.constant(<span class="hljs-number">0</span>,tf.int8)
+    img = tf.io.read_file(img_path)
+    img = tf.image.decode_jpeg(img) <span class="hljs-comment">#&#x6CE8;&#x610F;&#x6B64;&#x5904;&#x4E3A;jpeg&#x683C;&#x5F0F;</span>
+    img = tf.image.resize(img,size)/<span class="hljs-number">255.0</span>
+    <span class="hljs-keyword">return</span>(img,label)
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-comment">#&#x4F7F;&#x7528;&#x5E76;&#x884C;&#x5316;&#x9884;&#x5904;&#x7406;num_parallel_calls &#x548C;&#x9884;&#x5B58;&#x6570;&#x636E;prefetch&#x6765;&#x63D0;&#x5347;&#x6027;&#x80FD;</span>
+ds_train = tf.data.Dataset.list_files(<span class="hljs-string">&quot;./data/cifar2/train/*/*.jpg&quot;</span>) \
+           .map(load_image, num_parallel_calls=tf.data.experimental.AUTOTUNE) \
+           .shuffle(buffer_size = <span class="hljs-number">1000</span>).batch(BATCH_SIZE) \
+           .prefetch(tf.data.experimental.AUTOTUNE)  
+
+ds_test = tf.data.Dataset.list_files(<span class="hljs-string">&quot;./data/cifar2/test/*/*.jpg&quot;</span>) \
+           .map(load_image, num_parallel_calls=tf.data.experimental.AUTOTUNE) \
+           .batch(BATCH_SIZE) \
+           .prefetch(tf.data.experimental.AUTOTUNE)
+</code></pre>
+<pre><code class="lang-python">%matplotlib inline
+%config InlineBackend.figure_format = <span class="hljs-string">&apos;svg&apos;</span>
+
+<span class="hljs-comment">#&#x67E5;&#x770B;&#x90E8;&#x5206;&#x6837;&#x672C;</span>
+<span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> pyplot <span class="hljs-keyword">as</span> plt 
+
+plt.figure(figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">8</span>)) 
+<span class="hljs-keyword">for</span> i,(img,label) <span class="hljs-keyword">in</span> enumerate(ds_train.unbatch().take(<span class="hljs-number">9</span>)):
+    ax=plt.subplot(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,i+<span class="hljs-number">1</span>)
+    ax.imshow(img.numpy())
+    ax.set_title(<span class="hljs-string">&quot;label = %d&quot;</span>%label)
+    ax.set_xticks([])
+    ax.set_yticks([]) 
+plt.show()
+</code></pre>
+<p><img src="data/1-2-&#x56FE;&#x7247;&#x9884;&#x89C8;.jpg" alt=""></p>
+<pre><code class="lang-python"><span class="hljs-keyword">for</span> x,y <span class="hljs-keyword">in</span> ds_train.take(<span class="hljs-number">1</span>):
+    print(x.shape,y.shape)
+</code></pre>
+<pre><code>(100, 32, 32, 3) (100,)
+</code></pre><pre><code class="lang-python">
+
+</code></pre>
+<h3 id="&#x4E8C;&#xFF0C;&#x5B9A;&#x4E49;&#x6A21;&#x578B;">&#x4E8C;&#xFF0C;&#x5B9A;&#x4E49;&#x6A21;&#x578B;</h3>
+<p>&#x4F7F;&#x7528;Keras&#x63A5;&#x53E3;&#x6709;&#x4EE5;&#x4E0B;3&#x79CD;&#x65B9;&#x5F0F;&#x6784;&#x5EFA;&#x6A21;&#x578B;&#xFF1A;&#x4F7F;&#x7528;Sequential&#x6309;&#x5C42;&#x987A;&#x5E8F;&#x6784;&#x5EFA;&#x6A21;&#x578B;&#xFF0C;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x5F0F;API&#x6784;&#x5EFA;&#x4EFB;&#x610F;&#x7ED3;&#x6784;&#x6A21;&#x578B;&#xFF0C;&#x7EE7;&#x627F;Model&#x57FA;&#x7C7B;&#x6784;&#x5EFA;&#x81EA;&#x5B9A;&#x4E49;&#x6A21;&#x578B;&#x3002;</p>
+<p>&#x6B64;&#x5904;&#x9009;&#x62E9;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x5F0F;API&#x6784;&#x5EFA;&#x6A21;&#x578B;&#x3002;</p>
+<pre><code class="lang-python">tf.keras.backend.clear_session() <span class="hljs-comment">#&#x6E05;&#x7A7A;&#x4F1A;&#x8BDD;</span>
+
+inputs = layers.Input(shape=(<span class="hljs-number">32</span>,<span class="hljs-number">32</span>,<span class="hljs-number">3</span>))
+x = layers.Conv2D(<span class="hljs-number">32</span>,kernel_size=(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>))(inputs)
+x = layers.MaxPool2D()(x)
+x = layers.Conv2D(<span class="hljs-number">64</span>,kernel_size=(<span class="hljs-number">5</span>,<span class="hljs-number">5</span>))(x)
+x = layers.MaxPool2D()(x)
+x = layers.Dropout(rate=<span class="hljs-number">0.1</span>)(x)
+x = layers.Flatten()(x)
+x = layers.Dense(<span class="hljs-number">32</span>,activation=<span class="hljs-string">&apos;relu&apos;</span>)(x)
+outputs = layers.Dense(<span class="hljs-number">1</span>,activation = <span class="hljs-string">&apos;sigmoid&apos;</span>)(x)
+
+model = models.Model(inputs = inputs,outputs = outputs)
+
+model.summary()
+</code></pre>
+<pre><code>Model: &quot;model&quot;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         [(None, 32, 32, 3)]       0         
+_________________________________________________________________
+conv2d (Conv2D)              (None, 30, 30, 32)        896       
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 15, 15, 32)        0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 11, 11, 64)        51264     
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 5, 5, 64)          0         
+_________________________________________________________________
+dropout (Dropout)            (None, 5, 5, 64)          0         
+_________________________________________________________________
+flatten (Flatten)            (None, 1600)              0         
+_________________________________________________________________
+dense (Dense)                (None, 32)                51232     
+_________________________________________________________________
+dense_1 (Dense)              (None, 1)                 33        
+=================================================================
+Total params: 103,425
+Trainable params: 103,425
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre><pre><code class="lang-python">
+
+</code></pre>
+<h3 id="&#x4E09;&#xFF0C;&#x8BAD;&#x7EC3;&#x6A21;&#x578B;">&#x4E09;&#xFF0C;&#x8BAD;&#x7EC3;&#x6A21;&#x578B;</h3>
+<p>&#x8BAD;&#x7EC3;&#x6A21;&#x578B;&#x901A;&#x5E38;&#x6709;3&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x5185;&#x7F6E;fit&#x65B9;&#x6CD5;&#xFF0C;&#x5185;&#x7F6E;train_on_batch&#x65B9;&#x6CD5;&#xFF0C;&#x4EE5;&#x53CA;&#x81EA;&#x5B9A;&#x4E49;&#x8BAD;&#x7EC3;&#x5FAA;&#x73AF;&#x3002;&#x6B64;&#x5904;&#x6211;&#x4EEC;&#x9009;&#x62E9;&#x6700;&#x5E38;&#x7528;&#x4E5F;&#x6700;&#x7B80;&#x5355;&#x7684;&#x5185;&#x7F6E;fit&#x65B9;&#x6CD5;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> datetime
+
+logdir = <span class="hljs-string">&quot;./data/keras_model/&quot;</span> + datetime.datetime.now().strftime(<span class="hljs-string">&quot;%Y%m%d-%H%M%S&quot;</span>)
+tensorboard_callback = tf.keras.callbacks.TensorBoard(logdir, histogram_freq=<span class="hljs-number">1</span>)
+
+model.compile(
+        optimizer=tf.keras.optimizers.Adam(learning_rate=<span class="hljs-number">0.001</span>),
+        loss=tf.keras.losses.binary_crossentropy,
+        metrics=[<span class="hljs-string">&quot;accuracy&quot;</span>]
+    )
+
+history = model.fit(ds_train,epochs= <span class="hljs-number">10</span>,validation_data=ds_test,
+                    callbacks = [tensorboard_callback],workers = <span class="hljs-number">4</span>)
+</code></pre>
+<pre><code>Train for 100 steps, validate for 20 steps
+Epoch 1/10
+100/100 [==============================] - 16s 156ms/step - loss: 0.4830 - accuracy: 0.7697 - val_loss: 0.3396 - val_accuracy: 0.8475
+Epoch 2/10
+100/100 [==============================] - 14s 142ms/step - loss: 0.3437 - accuracy: 0.8469 - val_loss: 0.2997 - val_accuracy: 0.8680
+Epoch 3/10
+100/100 [==============================] - 13s 131ms/step - loss: 0.2871 - accuracy: 0.8777 - val_loss: 0.2390 - val_accuracy: 0.9015
+Epoch 4/10
+100/100 [==============================] - 12s 117ms/step - loss: 0.2410 - accuracy: 0.9040 - val_loss: 0.2005 - val_accuracy: 0.9195
+Epoch 5/10
+100/100 [==============================] - 13s 130ms/step - loss: 0.1992 - accuracy: 0.9213 - val_loss: 0.1949 - val_accuracy: 0.9180
+Epoch 6/10
+100/100 [==============================] - 14s 136ms/step - loss: 0.1737 - accuracy: 0.9323 - val_loss: 0.1723 - val_accuracy: 0.9275
+Epoch 7/10
+100/100 [==============================] - 14s 139ms/step - loss: 0.1531 - accuracy: 0.9412 - val_loss: 0.1670 - val_accuracy: 0.9310
+Epoch 8/10
+100/100 [==============================] - 13s 134ms/step - loss: 0.1299 - accuracy: 0.9525 - val_loss: 0.1553 - val_accuracy: 0.9340
+Epoch 9/10
+100/100 [==============================] - 14s 137ms/step - loss: 0.1158 - accuracy: 0.9556 - val_loss: 0.1581 - val_accuracy: 0.9340
+Epoch 10/10
+100/100 [==============================] - 14s 142ms/step - loss: 0.1006 - accuracy: 0.9617 - val_loss: 0.1614 - val_accuracy: 0.9345
+</code></pre><pre><code class="lang-python">
+
+</code></pre>
+<h3 id="&#x56DB;&#xFF0C;&#x8BC4;&#x4F30;&#x6A21;&#x578B;">&#x56DB;&#xFF0C;&#x8BC4;&#x4F30;&#x6A21;&#x578B;</h3>
+<pre><code class="lang-python"><span class="hljs-comment">#%load_ext tensorboard</span>
+<span class="hljs-comment">#%tensorboard --logdir ./data/keras_model</span>
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> tensorboard <span class="hljs-keyword">import</span> notebook
+notebook.list()
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-comment">#&#x5728;tensorboard&#x4E2D;&#x67E5;&#x770B;&#x6A21;&#x578B;</span>
+notebook.start(<span class="hljs-string">&quot;--logdir ./data/keras_model&quot;</span>)
+</code></pre>
+<pre><code class="lang-python">
+
+</code></pre>
+<p><img src="data/1-2-tensorboard.jpg" alt=""></p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd 
+dfhistory = pd.DataFrame(history.history)
+dfhistory.index = range(<span class="hljs-number">1</span>,len(dfhistory) + <span class="hljs-number">1</span>)
+dfhistory.index.name = <span class="hljs-string">&apos;epoch&apos;</span>
+
+dfhistory
+</code></pre>
+<p><img src="data/1-2-dfhistory.jpg" alt=""></p>
+<pre><code class="lang-python">%matplotlib inline
+%config InlineBackend.figure_format = <span class="hljs-string">&apos;svg&apos;</span>
+
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plot_metric</span><span class="hljs-params">(history, metric)</span>:</span>
+    train_metrics = history.history[metric]
+    val_metrics = history.history[<span class="hljs-string">&apos;val_&apos;</span>+metric]
+    epochs = range(<span class="hljs-number">1</span>, len(train_metrics) + <span class="hljs-number">1</span>)
+    plt.plot(epochs, train_metrics, <span class="hljs-string">&apos;bo--&apos;</span>)
+    plt.plot(epochs, val_metrics, <span class="hljs-string">&apos;ro-&apos;</span>)
+    plt.title(<span class="hljs-string">&apos;Training and validation &apos;</span>+ metric)
+    plt.xlabel(<span class="hljs-string">&quot;Epochs&quot;</span>)
+    plt.ylabel(metric)
+    plt.legend([<span class="hljs-string">&quot;train_&quot;</span>+metric, <span class="hljs-string">&apos;val_&apos;</span>+metric])
+    plt.show()
+</code></pre>
+<pre><code class="lang-python">plot_metric(history,<span class="hljs-string">&quot;loss&quot;</span>)
+</code></pre>
+<p><img src="data/1-2-Loss&#x66F2;&#x7EBF;.jpg" alt=""></p>
+<pre><code class="lang-python">plot_metric(history,<span class="hljs-string">&quot;accuracy&quot;</span>)
+</code></pre>
+<p><img src="data/1-2-Accuracy&#x66F2;&#x7EBF;.jpg" alt=""></p>
+<pre><code class="lang-python"><span class="hljs-comment">#&#x53EF;&#x4EE5;&#x4F7F;&#x7528;evaluate&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x8BC4;&#x4F30;</span>
+val_loss,val_accuracy = model.evaluate(ds_test,workers=<span class="hljs-number">4</span>)
+print(val_loss,val_accuracy)
+</code></pre>
+<pre><code>0.16139143370091916 0.9345
+</code></pre><h3 id="&#x4E94;&#xFF0C;&#x4F7F;&#x7528;&#x6A21;&#x578B;">&#x4E94;&#xFF0C;&#x4F7F;&#x7528;&#x6A21;&#x578B;</h3>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;model.predict(ds_test)&#x8FDB;&#x884C;&#x9884;&#x6D4B;&#x3002;</p>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;model.predict_on_batch(x_test)&#x5BF9;&#x4E00;&#x4E2A;&#x6279;&#x91CF;&#x8FDB;&#x884C;&#x9884;&#x6D4B;&#x3002;</p>
+<pre><code class="lang-python">model.predict(ds_test)
+</code></pre>
+<pre><code>array([[9.9996173e-01],
+       [9.5104784e-01],
+       [2.8648047e-04],
+       ...,
+       [1.1484033e-03],
+       [3.5589080e-02],
+       [9.8537153e-01]], dtype=float32)
+</code></pre><pre><code class="lang-python"><span class="hljs-keyword">for</span> x,y <span class="hljs-keyword">in</span> ds_test.take(<span class="hljs-number">1</span>):
+    print(model.predict_on_batch(x[<span class="hljs-number">0</span>:<span class="hljs-number">20</span>]))
+</code></pre>
+<pre><code>tf.Tensor(
+[[3.8065155e-05]
+ [8.8236779e-01]
+ [9.1433197e-01]
+ [9.9921846e-01]
+ [6.4052093e-01]
+ [4.9970779e-03]
+ [2.6735585e-04]
+ [9.9842811e-01]
+ [7.9198682e-01]
+ [7.4823302e-01]
+ [8.7208226e-03]
+ [9.3951421e-03]
+ [9.9790359e-01]
+ [9.9998581e-01]
+ [2.1642199e-05]
+ [1.7915063e-02]
+ [2.5839690e-02]
+ [9.7538447e-01]
+ [9.7393811e-01]
+ [9.7333014e-01]], shape=(20, 1), dtype=float32)
+</code></pre><pre><code class="lang-python">
+
+</code></pre>
+<h3 id="&#x516D;&#xFF0C;&#x4FDD;&#x5B58;&#x6A21;&#x578B;">&#x516D;&#xFF0C;&#x4FDD;&#x5B58;&#x6A21;&#x578B;</h3>
+<p>&#x63A8;&#x8350;&#x4F7F;&#x7528;TensorFlow&#x539F;&#x751F;&#x65B9;&#x5F0F;&#x4FDD;&#x5B58;&#x6A21;&#x578B;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x4FDD;&#x5B58;&#x6743;&#x91CD;&#xFF0C;&#x8BE5;&#x65B9;&#x5F0F;&#x4EC5;&#x4EC5;&#x4FDD;&#x5B58;&#x6743;&#x91CD;&#x5F20;&#x91CF;</span>
+model.save_weights(<span class="hljs-string">&apos;./data/tf_model_weights.ckpt&apos;</span>,save_format = <span class="hljs-string">&quot;tf&quot;</span>)
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x4FDD;&#x5B58;&#x6A21;&#x578B;&#x7ED3;&#x6784;&#x4E0E;&#x6A21;&#x578B;&#x53C2;&#x6570;&#x5230;&#x6587;&#x4EF6;,&#x8BE5;&#x65B9;&#x5F0F;&#x4FDD;&#x5B58;&#x7684;&#x6A21;&#x578B;&#x5177;&#x6709;&#x8DE8;&#x5E73;&#x53F0;&#x6027;&#x4FBF;&#x4E8E;&#x90E8;&#x7F72;</span>
+
+model.save(<span class="hljs-string">&apos;./data/tf_model_savedmodel&apos;</span>, save_format=<span class="hljs-string">&quot;tf&quot;</span>)
+print(<span class="hljs-string">&apos;export saved model.&apos;</span>)
+
+model_loaded = tf.keras.models.load_model(<span class="hljs-string">&apos;./data/tf_model_savedmodel&apos;</span>)
+model_loaded.evaluate(ds_test)
+</code></pre>
+<pre><code>[0.16139124035835267, 0.9345]
+</code></pre><pre><code class="lang-python">
+
+</code></pre>
+<p>&#x5982;&#x679C;&#x5BF9;&#x672C;&#x4E66;&#x5185;&#x5BB9;&#x7406;&#x89E3;&#x4E0A;&#x6709;&#x9700;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x548C;&#x4F5C;&#x8005;&#x4EA4;&#x6D41;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6B22;&#x8FCE;&#x5728;&#x516C;&#x4F17;&#x53F7;&quot;Python&#x4E0E;&#x7B97;&#x6CD5;&#x4E4B;&#x7F8E;&quot;&#x4E0B;&#x7559;&#x8A00;&#x3002;&#x4F5C;&#x8005;&#x65F6;&#x95F4;&#x548C;&#x7CBE;&#x529B;&#x6709;&#x9650;&#xFF0C;&#x4F1A;&#x914C;&#x60C5;&#x4E88;&#x4EE5;&#x56DE;&#x590D;&#x3002;</p>
+<p><img src="data/Python&#x4E0E;&#x7B97;&#x6CD5;&#x4E4B;&#x7F8E;logo.jpg" alt="image.png"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="1-1,结构化数据建模流程范例.html" class="navigation navigation-prev " aria-label="Previous page: 1-1,结构化数据建模流程范例">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="1-3,文本数据建模流程范例.html" class="navigation navigation-next " aria-label="Next page: 1-3,文本数据建模流程范例">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"1-2,图片数据建模流程范例","level":"1.4","depth":1,"next":{"title":"1-3,文本数据建模流程范例","level":"1.5","depth":1,"path":"1-3,文本数据建模流程范例.md","ref":"./1-3,文本数据建模流程范例.md","articles":[]},"previous":{"title":"1-1,结构化数据建模流程范例","level":"1.3","depth":1,"path":"1-1,结构化数据建模流程范例.md","ref":"./1-1,结构化数据建模流程范例.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"1-2,图片数据建模流程范例.md","mtime":"2020-03-22T08:44:43.626Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-22T09:03:39.786Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,908 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>5-4,模型层layers · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="5-5,损失函数losses.html" />
+    
+    
+    <link rel="prev" href="5-3,激活函数activation.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="一、TensorFlow的建模流程.html">
+            
+                <a href="一、TensorFlow的建模流程.html">
+            
+                    
+                    一、TensorFlow的建模流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="1-1,结构化数据建模流程范例.html">
+            
+                <a href="1-1,结构化数据建模流程范例.html">
+            
+                    
+                    1-1,结构化数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="1-2,图片数据建模流程范例.html">
+            
+                <a href="1-2,图片数据建模流程范例.html">
+            
+                    
+                    1-2,图片数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="1-3,文本数据建模流程范例.html">
+            
+                <a href="1-3,文本数据建模流程范例.html">
+            
+                    
+                    1-3,文本数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="1-4,时间序列数据建模流程范例.html">
+            
+                <a href="1-4,时间序列数据建模流程范例.html">
+            
+                    
+                    1-4,时间序列数据建模流程范例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="二、TensorFlow的核心概念.html">
+            
+                <a href="二、TensorFlow的核心概念.html">
+            
+                    
+                    二、TensorFlow的核心概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="2-1,张量数据结构.html">
+            
+                <a href="2-1,张量数据结构.html">
+            
+                    
+                    2-1,张量数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="2-2,三种计算图.html">
+            
+                <a href="2-2,三种计算图.html">
+            
+                    
+                    2-2,三种计算图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="2-3,自动微分机制.html">
+            
+                <a href="2-3,自动微分机制.html">
+            
+                    
+                    2-3,自动微分机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="三、TensorFlow的层次结构.html">
+            
+                <a href="三、TensorFlow的层次结构.html">
+            
+                    
+                    三、TensorFlow的层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="3-1,低阶API示范.html">
+            
+                <a href="3-1,低阶API示范.html">
+            
+                    
+                    3-1,低阶API示范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="3-2,中阶API示范.html">
+            
+                <a href="3-2,中阶API示范.html">
+            
+                    
+                    3-2,中阶API示范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="3-3,高阶API示范.html">
+            
+                <a href="3-3,高阶API示范.html">
+            
+                    
+                    3-3,高阶API示范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="四、TensorFlow的低阶API.html">
+            
+                <a href="四、TensorFlow的低阶API.html">
+            
+                    
+                    四、TensorFlow的低阶API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="4-1,张量的结构操作.html">
+            
+                <a href="4-1,张量的结构操作.html">
+            
+                    
+                    4-1,张量的结构操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="4-2,张量的数学运算.html">
+            
+                <a href="4-2,张量的数学运算.html">
+            
+                    
+                    4-2,张量的数学运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="4-3,AutoGraph的使用规范.html">
+            
+                <a href="4-3,AutoGraph的使用规范.html">
+            
+                    
+                    4-3,AutoGraph的使用规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="4-4,AutoGraph的机制原理.html">
+            
+                <a href="4-4,AutoGraph的机制原理.html">
+            
+                    
+                    4-4,AutoGraph的机制原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="4-5,AutoGraph和tf.Module.html">
+            
+                <a href="4-5,AutoGraph和tf.Module.html">
+            
+                    
+                    4-5,AutoGraph和tf.Module
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" data-path="五、TensorFlow的中阶API.html">
+            
+                <a href="五、TensorFlow的中阶API.html">
+            
+                    
+                    五、TensorFlow的中阶API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" data-path="5-1,数据管道Dataset.html">
+            
+                <a href="5-1,数据管道Dataset.html">
+            
+                    
+                    5-1,数据管道Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" data-path="5-2,特征列feature_column.html">
+            
+                <a href="5-2,特征列feature_column.html">
+            
+                    
+                    5-2,特征列feature_column
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24" data-path="5-3,激活函数activation.html">
+            
+                <a href="5-3,激活函数activation.html">
+            
+                    
+                    5-3,激活函数activation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.25" data-path="5-4,模型层layers.html">
+            
+                <a href="5-4,模型层layers.html">
+            
+                    
+                    5-4,模型层layers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26" data-path="5-5,损失函数losses.html">
+            
+                <a href="5-5,损失函数losses.html">
+            
+                    
+                    5-5,损失函数losses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27" data-path="5-6,评估指标metrics.html">
+            
+                <a href="5-6,评估指标metrics.html">
+            
+                    
+                    5-6,评估指标metrics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.28" data-path="5-7,优化器optimizers.html">
+            
+                <a href="5-7,优化器optimizers.html">
+            
+                    
+                    5-7,优化器optimizers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29" data-path="5-8,回调函数callbacks.html">
+            
+                <a href="5-8,回调函数callbacks.html">
+            
+                    
+                    5-8,回调函数callbacks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30" data-path="六、TensorFlow的高阶API.html">
+            
+                <a href="六、TensorFlow的高阶API.html">
+            
+                    
+                    六、TensorFlow的高阶API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31" data-path="6-1,构建模型的3种方法.html">
+            
+                <a href="6-1,构建模型的3种方法.html">
+            
+                    
+                    6-1,构建模型的3种方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.32" data-path="6-2,训练模型的3种方法.html">
+            
+                <a href="6-2,训练模型的3种方法.html">
+            
+                    
+                    6-2,训练模型的3种方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.33" data-path="6-3,使用单GPU训练模型.html">
+            
+                <a href="6-3,使用单GPU训练模型.html">
+            
+                    
+                    6-3,使用单GPU训练模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34" data-path="6-4,使用多GPU训练模型.html">
+            
+                <a href="6-4,使用多GPU训练模型.html">
+            
+                    
+                    6-4,使用多GPU训练模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.35" data-path="6-5,使用TPU训练模型.html">
+            
+                <a href="6-5,使用TPU训练模型.html">
+            
+                    
+                    6-5,使用TPU训练模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.36" data-path="6-6,使用tensorflow-serving部署模型.html">
+            
+                <a href="6-6,使用tensorflow-serving部署模型.html">
+            
+                    
+                    6-6,使用tensorflow-serving部署模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.37" data-path="6-7,使用spark-scala调用tensorflow模型.html">
+            
+                <a href="6-7,使用spark-scala调用tensorflow模型.html">
+            
+                    
+                    6-7,使用spark-scala调用tensorflow模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.38" data-path="后记：一个吃货和一道菜的故事.html">
+            
+                <a href="后记：一个吃货和一道菜的故事.html">
+            
+                    
+                    后记：一个吃货和一道菜的故事
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >5-4,模型层layers</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="5-4&#x6A21;&#x578B;&#x5C42;layers">5-4,&#x6A21;&#x578B;&#x5C42;layers</h1>
+<p>&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6A21;&#x578B;&#x4E00;&#x822C;&#x7531;&#x5404;&#x79CD;&#x6A21;&#x578B;&#x5C42;&#x7EC4;&#x5408;&#x800C;&#x6210;&#x3002;</p>
+<p>tf.keras.layers&#x5185;&#x7F6E;&#x4E86;&#x975E;&#x5E38;&#x4E30;&#x5BCC;&#x7684;&#x5404;&#x79CD;&#x529F;&#x80FD;&#x7684;&#x6A21;&#x578B;&#x5C42;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<p>layers.Dense,layers.Flatten,layers.Input,layers.DenseFeature,layers.Dropout</p>
+<p>layers.Conv2D,layers.MaxPooling2D,layers.Conv1D</p>
+<p>layers.Embedding,layers.GRU,layers.LSTM,layers.Bidirectional&#x7B49;&#x7B49;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x8FD9;&#x4E9B;&#x5185;&#x7F6E;&#x6A21;&#x578B;&#x5C42;&#x4E0D;&#x80FD;&#x591F;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7F16;&#x5199;tf.keras.Lambda&#x533F;&#x540D;&#x6A21;&#x578B;&#x5C42;&#x6216;&#x7EE7;&#x627F;tf.keras.layers.Layer&#x57FA;&#x7C7B;&#x6784;&#x5EFA;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6A21;&#x578B;&#x5C42;&#x3002;</p>
+<p>&#x5176;&#x4E2D;tf.keras.Lambda&#x533F;&#x540D;&#x6A21;&#x578B;&#x5C42;&#x53EA;&#x9002;&#x7528;&#x4E8E;&#x6784;&#x9020;&#x6CA1;&#x6709;&#x5B66;&#x4E60;&#x53C2;&#x6570;&#x7684;&#x6A21;&#x578B;&#x5C42;&#x3002;</p>
+<pre><code class="lang-python">
+
+</code></pre>
+<h3 id="&#x4E00;&#xFF0C;&#x5185;&#x7F6E;&#x6A21;&#x578B;&#x5C42;">&#x4E00;&#xFF0C;&#x5185;&#x7F6E;&#x6A21;&#x578B;&#x5C42;</h3>
+<pre><code class="lang-python">
+
+</code></pre>
+<p>&#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x7684;&#x5185;&#x7F6E;&#x6A21;&#x578B;&#x5C42;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x5982;&#x4E0B;&#x3002;</p>
+<p><strong>&#x57FA;&#x7840;&#x5C42;</strong></p>
+<ul>
+<li><p>Dense&#xFF1A;&#x5BC6;&#x96C6;&#x8FDE;&#x63A5;&#x5C42;&#x3002;&#x53C2;&#x6570;&#x4E2A;&#x6570; = &#x8F93;&#x5165;&#x5C42;&#x7279;&#x5F81;&#x6570;&#xD7; &#x8F93;&#x51FA;&#x5C42;&#x7279;&#x5F81;&#x6570;(weight)&#xFF0B; &#x8F93;&#x51FA;&#x5C42;&#x7279;&#x5F81;&#x6570;(bias)</p>
+</li>
+<li><p>Activation&#xFF1A;&#x6FC0;&#x6D3B;&#x51FD;&#x6570;&#x5C42;&#x3002;&#x4E00;&#x822C;&#x653E;&#x5728;Dense&#x5C42;&#x540E;&#x9762;&#xFF0C;&#x7B49;&#x4EF7;&#x4E8E;&#x5728;Dense&#x5C42;&#x4E2D;&#x6307;&#x5B9A;activation&#x3002;</p>
+</li>
+<li><p>Dropout&#xFF1A;&#x968F;&#x673A;&#x7F6E;&#x96F6;&#x5C42;&#x3002;&#x8BAD;&#x7EC3;&#x671F;&#x95F4;&#x4EE5;&#x4E00;&#x5B9A;&#x51E0;&#x7387;&#x5C06;&#x8F93;&#x5165;&#x7F6E;0&#xFF0C;&#x4E00;&#x79CD;&#x6B63;&#x5219;&#x5316;&#x624B;&#x6BB5;&#x3002;</p>
+</li>
+<li><p>BatchNormalization&#xFF1A;&#x6279;&#x6807;&#x51C6;&#x5316;&#x5C42;&#x3002;&#x901A;&#x8FC7;&#x7EBF;&#x6027;&#x53D8;&#x6362;&#x5C06;&#x8F93;&#x5165;&#x6279;&#x6B21;&#x7F29;&#x653E;&#x5E73;&#x79FB;&#x5230;&#x7A33;&#x5B9A;&#x7684;&#x5747;&#x503C;&#x548C;&#x6807;&#x51C6;&#x5DEE;&#x3002;&#x53EF;&#x4EE5;&#x589E;&#x5F3A;&#x6A21;&#x578B;&#x5BF9;&#x8F93;&#x5165;&#x4E0D;&#x540C;&#x5206;&#x5E03;&#x7684;&#x9002;&#x5E94;&#x6027;&#xFF0C;&#x52A0;&#x5FEB;&#x6A21;&#x578B;&#x8BAD;&#x7EC3;&#x901F;&#x5EA6;&#xFF0C;&#x6709;&#x8F7B;&#x5FAE;&#x6B63;&#x5219;&#x5316;&#x6548;&#x679C;&#x3002;&#x4E00;&#x822C;&#x5728;&#x6FC0;&#x6D3B;&#x51FD;&#x6570;&#x4E4B;&#x524D;&#x4F7F;&#x7528;&#x3002;</p>
+</li>
+<li><p>SpatialDropout2D&#xFF1A;&#x7A7A;&#x95F4;&#x968F;&#x673A;&#x7F6E;&#x96F6;&#x5C42;&#x3002;&#x8BAD;&#x7EC3;&#x671F;&#x95F4;&#x4EE5;&#x4E00;&#x5B9A;&#x51E0;&#x7387;&#x5C06;&#x6574;&#x4E2A;&#x7279;&#x5F81;&#x56FE;&#x7F6E;0&#xFF0C;&#x4E00;&#x79CD;&#x6B63;&#x5219;&#x5316;&#x624B;&#x6BB5;&#xFF0C;&#x6709;&#x5229;&#x4E8E;&#x907F;&#x514D;&#x7279;&#x5F81;&#x56FE;&#x4E4B;&#x95F4;&#x8FC7;&#x9AD8;&#x7684;&#x76F8;&#x5173;&#x6027;&#x3002;</p>
+</li>
+<li><p>Input&#xFF1A;&#x8F93;&#x5165;&#x5C42;&#x3002;&#x901A;&#x5E38;&#x4F7F;&#x7528;Functional API&#x65B9;&#x5F0F;&#x6784;&#x5EFA;&#x6A21;&#x578B;&#x65F6;&#x4F5C;&#x4E3A;&#x7B2C;&#x4E00;&#x5C42;&#x3002;</p>
+</li>
+<li><p>DenseFeature&#xFF1A;&#x7279;&#x5F81;&#x5217;&#x63A5;&#x5165;&#x5C42;&#xFF0C;&#x7528;&#x4E8E;&#x63A5;&#x6536;&#x4E00;&#x4E2A;&#x7279;&#x5F81;&#x5217;&#x5217;&#x8868;&#x5E76;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x5BC6;&#x96C6;&#x8FDE;&#x63A5;&#x5C42;&#x3002;</p>
+</li>
+<li><p>Flatten&#xFF1A;&#x538B;&#x5E73;&#x5C42;&#xFF0C;&#x7528;&#x4E8E;&#x5C06;&#x591A;&#x7EF4;&#x5F20;&#x91CF;&#x538B;&#x6210;&#x4E00;&#x7EF4;&#x3002;</p>
+</li>
+<li><p>Reshape&#xFF1A;&#x5F62;&#x72B6;&#x91CD;&#x5851;&#x5C42;&#xFF0C;&#x6539;&#x53D8;&#x8F93;&#x5165;&#x5F20;&#x91CF;&#x7684;&#x5F62;&#x72B6;&#x3002;</p>
+</li>
+<li><p>Concatenate&#xFF1A;&#x62FC;&#x63A5;&#x5C42;&#xFF0C;&#x5C06;&#x591A;&#x4E2A;&#x5F20;&#x91CF;&#x5728;&#x67D0;&#x4E2A;&#x7EF4;&#x5EA6;&#x4E0A;&#x62FC;&#x63A5;&#x3002;</p>
+</li>
+<li><p>Add&#xFF1A;&#x52A0;&#x6CD5;&#x5C42;&#x3002;</p>
+</li>
+<li><p>Subtract&#xFF1A; &#x51CF;&#x6CD5;&#x5C42;&#x3002;</p>
+</li>
+<li><p>Maximum&#xFF1A;&#x53D6;&#x6700;&#x5927;&#x503C;&#x5C42;&#x3002;</p>
+</li>
+<li><p>Minimum&#xFF1A;&#x53D6;&#x6700;&#x5C0F;&#x503C;&#x5C42;&#x3002;</p>
+</li>
+</ul>
+<p><strong>&#x5377;&#x79EF;&#x7F51;&#x7EDC;&#x76F8;&#x5173;&#x5C42;</strong></p>
+<ul>
+<li><p>Conv1D&#xFF1A;&#x666E;&#x901A;&#x4E00;&#x7EF4;&#x5377;&#x79EF;&#xFF0C;&#x5E38;&#x7528;&#x4E8E;&#x6587;&#x672C;&#x3002;&#x53C2;&#x6570;&#x4E2A;&#x6570; = &#x8F93;&#x5165;&#x901A;&#x9053;&#x6570;&#xD7;&#x5377;&#x79EF;&#x6838;&#x5C3A;&#x5BF8;(&#x5982;3)&#xD7;&#x5377;&#x79EF;&#x6838;&#x4E2A;&#x6570;</p>
+</li>
+<li><p>Conv2D&#xFF1A;&#x666E;&#x901A;&#x4E8C;&#x7EF4;&#x5377;&#x79EF;&#xFF0C;&#x5E38;&#x7528;&#x4E8E;&#x56FE;&#x50CF;&#x3002;&#x53C2;&#x6570;&#x4E2A;&#x6570; = &#x8F93;&#x5165;&#x901A;&#x9053;&#x6570;&#xD7;&#x5377;&#x79EF;&#x6838;&#x5C3A;&#x5BF8;(&#x5982;3&#x4E58;3)&#xD7;&#x5377;&#x79EF;&#x6838;&#x4E2A;&#x6570;</p>
+</li>
+<li><p>Conv3D&#xFF1A;&#x666E;&#x901A;&#x4E09;&#x7EF4;&#x5377;&#x79EF;&#xFF0C;&#x5E38;&#x7528;&#x4E8E;&#x89C6;&#x9891;&#x3002;&#x53C2;&#x6570;&#x4E2A;&#x6570; = &#x8F93;&#x5165;&#x901A;&#x9053;&#x6570;&#xD7;&#x5377;&#x79EF;&#x6838;&#x5C3A;&#x5BF8;(&#x5982;3&#x4E58;3&#x4E58;3)&#xD7;&#x5377;&#x79EF;&#x6838;&#x4E2A;&#x6570;</p>
+</li>
+<li><p>SeparableConv2D&#xFF1A;&#x4E8C;&#x7EF4;&#x6DF1;&#x5EA6;&#x53EF;&#x5206;&#x79BB;&#x5377;&#x79EF;&#x5C42;&#x3002;&#x4E0D;&#x540C;&#x4E8E;&#x666E;&#x901A;&#x5377;&#x79EF;&#x540C;&#x65F6;&#x5BF9;&#x533A;&#x57DF;&#x548C;&#x901A;&#x9053;&#x64CD;&#x4F5C;&#xFF0C;&#x6DF1;&#x5EA6;&#x53EF;&#x5206;&#x79BB;&#x5377;&#x79EF;&#x5148;&#x64CD;&#x4F5C;&#x533A;&#x57DF;&#xFF0C;&#x518D;&#x64CD;&#x4F5C;&#x901A;&#x9053;&#x3002;&#x5373;&#x5148;&#x5BF9;&#x6BCF;&#x4E2A;&#x901A;&#x9053;&#x505A;&#x72EC;&#x7ACB;&#x5377;&#x5373;&#x5148;&#x64CD;&#x4F5C;&#x533A;&#x57DF;&#xFF0C;&#x518D;&#x7528;1&#x4E58;1&#x5377;&#x79EF;&#x8DE8;&#x901A;&#x9053;&#x7EC4;&#x5408;&#x5373;&#x518D;&#x64CD;&#x4F5C;&#x901A;&#x9053;&#x3002;&#x53C2;&#x6570;&#x4E2A;&#x6570; = &#x8F93;&#x5165;&#x901A;&#x9053;&#x6570;&#xD7;&#x5377;&#x79EF;&#x6838;&#x5C3A;&#x5BF8; + &#x8F93;&#x5165;&#x901A;&#x9053;&#x6570;&#xD7;1&#xD7;1&#xD7;&#x8F93;&#x51FA;&#x901A;&#x9053;&#x6570;&#x3002;&#x6DF1;&#x5EA6;&#x53EF;&#x5206;&#x79BB;&#x5377;&#x79EF;&#x7684;&#x53C2;&#x6570;&#x6570;&#x91CF;&#x4E00;&#x822C;&#x8FDC;&#x5C0F;&#x4E8E;&#x666E;&#x901A;&#x5377;&#x79EF;&#xFF0C;&#x6548;&#x679C;&#x4E00;&#x822C;&#x4E5F;&#x66F4;&#x597D;&#x3002;</p>
+</li>
+<li><p>DepthwiseConv2D&#xFF1A;&#x4E8C;&#x7EF4;&#x6DF1;&#x5EA6;&#x5377;&#x79EF;&#x5C42;&#x3002;&#x4EC5;&#x6709;SeparableConv2D&#x524D;&#x534A;&#x90E8;&#x5206;&#x64CD;&#x4F5C;&#xFF0C;&#x5373;&#x53EA;&#x64CD;&#x4F5C;&#x533A;&#x57DF;&#xFF0C;&#x4E0D;&#x64CD;&#x4F5C;&#x901A;&#x9053;&#xFF0C;&#x4E00;&#x822C;&#x8F93;&#x51FA;&#x901A;&#x9053;&#x6570;&#x548C;&#x8F93;&#x5165;&#x901A;&#x9053;&#x6570;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;depth_multiplier&#x8BA9;&#x8F93;&#x51FA;&#x901A;&#x9053;&#x4E3A;&#x8F93;&#x5165;&#x901A;&#x9053;&#x7684;&#x82E5;&#x5E72;&#x500D;&#x6570;&#x3002;&#x8F93;&#x51FA;&#x901A;&#x9053;&#x6570; = &#x8F93;&#x5165;&#x901A;&#x9053;&#x6570; &#xD7; depth_multiplier&#x3002;&#x53C2;&#x6570;&#x4E2A;&#x6570; = &#x8F93;&#x5165;&#x901A;&#x9053;&#x6570;&#xD7;&#x5377;&#x79EF;&#x6838;&#x5C3A;&#x5BF8;&#xD7; depth_multiplier&#x3002;</p>
+</li>
+<li><p>Conv2DTranspose&#xFF1A;&#x4E8C;&#x7EF4;&#x5377;&#x79EF;&#x8F6C;&#x7F6E;&#x5C42;&#xFF0C;&#x4FD7;&#x79F0;&#x53CD;&#x5377;&#x79EF;&#x5C42;&#x3002;&#x5E76;&#x975E;&#x5377;&#x79EF;&#x7684;&#x9006;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;&#x5728;&#x5377;&#x79EF;&#x6838;&#x76F8;&#x540C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F53;&#x5176;&#x8F93;&#x5165;&#x5C3A;&#x5BF8;&#x662F;&#x5377;&#x79EF;&#x64CD;&#x4F5C;&#x8F93;&#x51FA;&#x5C3A;&#x5BF8;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5377;&#x79EF;&#x8F6C;&#x7F6E;&#x7684;&#x8F93;&#x51FA;&#x5C3A;&#x5BF8;&#x6070;&#x597D;&#x662F;&#x5377;&#x79EF;&#x64CD;&#x4F5C;&#x7684;&#x8F93;&#x5165;&#x5C3A;&#x5BF8;&#x3002;</p>
+</li>
+<li><p>LocallyConnected2D: &#x4E8C;&#x7EF4;&#x5C40;&#x90E8;&#x8FDE;&#x63A5;&#x5C42;&#x3002;&#x7C7B;&#x4F3C;Conv2D&#xFF0C;&#x552F;&#x4E00;&#x7684;&#x5DEE;&#x522B;&#x662F;&#x6CA1;&#x6709;&#x7A7A;&#x95F4;&#x4E0A;&#x7684;&#x6743;&#x503C;&#x5171;&#x4EAB;&#xFF0C;&#x6240;&#x4EE5;&#x5176;&#x53C2;&#x6570;&#x4E2A;&#x6570;&#x8FDC;&#x9AD8;&#x4E8E;&#x4E8C;&#x7EF4;&#x5377;&#x79EF;&#x3002;</p>
+</li>
+<li><p>MaxPooling2D: &#x4E8C;&#x7EF4;&#x6700;&#x5927;&#x6C60;&#x5316;&#x5C42;&#x3002;&#x4E5F;&#x79F0;&#x4F5C;&#x4E0B;&#x91C7;&#x6837;&#x5C42;&#x3002;&#x6C60;&#x5316;&#x5C42;&#x65E0;&#x53C2;&#x6570;&#xFF0C;&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#x662F;&#x964D;&#x7EF4;&#x3002;</p>
+</li>
+<li><p>AveragePooling2D: &#x4E8C;&#x7EF4;&#x5E73;&#x5747;&#x6C60;&#x5316;&#x5C42;&#x3002;</p>
+</li>
+<li><p>GlobalMaxPool2D: &#x5168;&#x5C40;&#x6700;&#x5927;&#x6C60;&#x5316;&#x5C42;&#x3002;&#x6BCF;&#x4E2A;&#x901A;&#x9053;&#x4EC5;&#x4FDD;&#x7559;&#x4E00;&#x4E2A;&#x503C;&#x3002;&#x4E00;&#x822C;&#x4ECE;&#x5377;&#x79EF;&#x5C42;&#x8FC7;&#x6E21;&#x5230;&#x5168;&#x8FDE;&#x63A5;&#x5C42;&#x65F6;&#x4F7F;&#x7528;&#xFF0C;&#x662F;Flatten&#x7684;&#x66FF;&#x4EE3;&#x65B9;&#x6848;&#x3002;</p>
+</li>
+<li><p>GlobalAvgPool2D: &#x5168;&#x5C40;&#x5E73;&#x5747;&#x6C60;&#x5316;&#x5C42;&#x3002;&#x6BCF;&#x4E2A;&#x901A;&#x9053;&#x4EC5;&#x4FDD;&#x7559;&#x4E00;&#x4E2A;&#x503C;&#x3002;</p>
+</li>
+</ul>
+<p><strong>&#x5FAA;&#x73AF;&#x7F51;&#x7EDC;&#x76F8;&#x5173;&#x5C42;</strong></p>
+<ul>
+<li><p>Embedding&#xFF1A;&#x5D4C;&#x5165;&#x5C42;&#x3002;&#x4E00;&#x79CD;&#x6BD4;Onehot&#x66F4;&#x52A0;&#x6709;&#x6548;&#x7684;&#x5BF9;&#x79BB;&#x6563;&#x7279;&#x5F81;&#x8FDB;&#x884C;&#x7F16;&#x7801;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x5C06;&#x8F93;&#x5165;&#x4E2D;&#x7684;&#x5355;&#x8BCD;&#x6620;&#x5C04;&#x4E3A;&#x7A20;&#x5BC6;&#x5411;&#x91CF;&#x3002;&#x5D4C;&#x5165;&#x5C42;&#x7684;&#x53C2;&#x6570;&#x9700;&#x8981;&#x5B66;&#x4E60;&#x3002;</p>
+</li>
+<li><p>LSTM&#xFF1A;&#x957F;&#x77ED;&#x8BB0;&#x5FC6;&#x5FAA;&#x73AF;&#x7F51;&#x7EDC;&#x5C42;&#x3002;&#x6700;&#x666E;&#x904D;&#x4F7F;&#x7528;&#x7684;&#x5FAA;&#x73AF;&#x7F51;&#x7EDC;&#x5C42;&#x3002;&#x5177;&#x6709;&#x643A;&#x5E26;&#x8F68;&#x9053;&#xFF0C;&#x9057;&#x5FD8;&#x95E8;&#xFF0C;&#x66F4;&#x65B0;&#x95E8;&#xFF0C;&#x8F93;&#x51FA;&#x95E8;&#x3002;&#x53EF;&#x4EE5;&#x8F83;&#x4E3A;&#x6709;&#x6548;&#x5730;&#x7F13;&#x89E3;&#x68AF;&#x5EA6;&#x6D88;&#x5931;&#x95EE;&#x9898;&#xFF0C;&#x4ECE;&#x800C;&#x80FD;&#x591F;&#x9002;&#x7528;&#x957F;&#x671F;&#x4F9D;&#x8D56;&#x95EE;&#x9898;&#x3002;&#x8BBE;&#x7F6E;return_sequences = True&#x65F6;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x5404;&#x4E2A;&#x4E2D;&#x95F4;&#x6B65;&#x9AA4;&#x8F93;&#x51FA;&#xFF0C;&#x5426;&#x5219;&#x53EA;&#x8FD4;&#x56DE;&#x6700;&#x7EC8;&#x8F93;&#x51FA;&#x3002;</p>
+</li>
+<li><p>GRU&#xFF1A;&#x95E8;&#x63A7;&#x5FAA;&#x73AF;&#x7F51;&#x7EDC;&#x5C42;&#x3002;LSTM&#x7684;&#x4F4E;&#x914D;&#x7248;&#xFF0C;&#x4E0D;&#x5177;&#x6709;&#x643A;&#x5E26;&#x8F68;&#x9053;&#xFF0C;&#x53C2;&#x6570;&#x6570;&#x91CF;&#x5C11;&#x4E8E;LSTM&#xFF0C;&#x8BAD;&#x7EC3;&#x901F;&#x5EA6;&#x66F4;&#x5FEB;&#x3002;</p>
+</li>
+<li><p>SimpleRNN&#xFF1A;&#x7B80;&#x5355;&#x5FAA;&#x73AF;&#x7F51;&#x7EDC;&#x5C42;&#x3002;&#x5BB9;&#x6613;&#x5B58;&#x5728;&#x68AF;&#x5EA6;&#x6D88;&#x5931;&#xFF0C;&#x4E0D;&#x80FD;&#x591F;&#x9002;&#x7528;&#x957F;&#x671F;&#x4F9D;&#x8D56;&#x95EE;&#x9898;&#x3002;&#x4E00;&#x822C;&#x8F83;&#x5C11;&#x4F7F;&#x7528;&#x3002;</p>
+</li>
+<li><p>ConvLSTM2D&#xFF1A;&#x5377;&#x79EF;&#x957F;&#x77ED;&#x8BB0;&#x5FC6;&#x5FAA;&#x73AF;&#x7F51;&#x7EDC;&#x5C42;&#x3002;&#x7ED3;&#x6784;&#x4E0A;&#x7C7B;&#x4F3C;LSTM&#xFF0C;&#x4F46;&#x5BF9;&#x8F93;&#x5165;&#x7684;&#x8F6C;&#x6362;&#x64CD;&#x4F5C;&#x548C;&#x5BF9;&#x72B6;&#x6001;&#x7684;&#x8F6C;&#x6362;&#x64CD;&#x4F5C;&#x90FD;&#x662F;&#x5377;&#x79EF;&#x8FD0;&#x7B97;&#x3002;</p>
+</li>
+<li><p>Bidirectional&#xFF1A;&#x53CC;&#x5411;&#x5FAA;&#x73AF;&#x7F51;&#x7EDC;&#x5305;&#x88C5;&#x5668;&#x3002;&#x53EF;&#x4EE5;&#x5C06;LSTM&#xFF0C;GRU&#x7B49;&#x5C42;&#x5305;&#x88C5;&#x6210;&#x53CC;&#x5411;&#x5FAA;&#x73AF;&#x7F51;&#x7EDC;&#x3002;&#x4ECE;&#x800C;&#x589E;&#x5F3A;&#x7279;&#x5F81;&#x63D0;&#x53D6;&#x80FD;&#x529B;&#x3002;</p>
+</li>
+<li><p>RNN&#xFF1A;RNN&#x57FA;&#x672C;&#x5C42;&#x3002;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x5FAA;&#x73AF;&#x7F51;&#x7EDC;&#x5355;&#x5143;&#x6216;&#x4E00;&#x4E2A;&#x5FAA;&#x73AF;&#x5355;&#x5143;&#x5217;&#x8868;&#xFF0C;&#x901A;&#x8FC7;&#x8C03;&#x7528;tf.keras.backend.rnn&#x51FD;&#x6570;&#x5728;&#x5E8F;&#x5217;&#x4E0A;&#x8FDB;&#x884C;&#x8FED;&#x4EE3;&#x4ECE;&#x800C;&#x8F6C;&#x6362;&#x6210;&#x5FAA;&#x73AF;&#x7F51;&#x7EDC;&#x5C42;&#x3002;</p>
+</li>
+<li><p>LSTMCell&#xFF1A;LSTM&#x5355;&#x5143;&#x3002;&#x548C;LSTM&#x5728;&#x6574;&#x4E2A;&#x5E8F;&#x5217;&#x4E0A;&#x8FED;&#x4EE3;&#x76F8;&#x6BD4;&#xFF0C;&#x5B83;&#x4EC5;&#x5728;&#x5E8F;&#x5217;&#x4E0A;&#x8FED;&#x4EE3;&#x4E00;&#x6B65;&#x3002;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7406;&#x89E3;LSTM&#x5373;RNN&#x57FA;&#x672C;&#x5C42;&#x5305;&#x88F9;LSTMCell&#x3002;</p>
+</li>
+<li><p>GRUCell&#xFF1A;GRU&#x5355;&#x5143;&#x3002;&#x548C;GRU&#x5728;&#x6574;&#x4E2A;&#x5E8F;&#x5217;&#x4E0A;&#x8FED;&#x4EE3;&#x76F8;&#x6BD4;&#xFF0C;&#x5B83;&#x4EC5;&#x5728;&#x5E8F;&#x5217;&#x4E0A;&#x8FED;&#x4EE3;&#x4E00;&#x6B65;&#x3002;</p>
+</li>
+<li><p>SimpleRNNCell&#xFF1A;SimpleRNN&#x5355;&#x5143;&#x3002;&#x548C;SimpleRNN&#x5728;&#x6574;&#x4E2A;&#x5E8F;&#x5217;&#x4E0A;&#x8FED;&#x4EE3;&#x76F8;&#x6BD4;&#xFF0C;&#x5B83;&#x4EC5;&#x5728;&#x5E8F;&#x5217;&#x4E0A;&#x8FED;&#x4EE3;&#x4E00;&#x6B65;&#x3002;</p>
+</li>
+<li><p>AbstractRNNCell&#xFF1A;&#x62BD;&#x8C61;RNN&#x5355;&#x5143;&#x3002;&#x901A;&#x8FC7;&#x5BF9;&#x5B83;&#x7684;&#x5B50;&#x7C7B;&#x5316;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;RNN&#x5355;&#x5143;&#xFF0C;&#x518D;&#x901A;&#x8FC7;RNN&#x57FA;&#x672C;&#x5C42;&#x7684;&#x5305;&#x88F9;&#x5B9E;&#x73B0;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x5FAA;&#x73AF;&#x7F51;&#x7EDC;&#x5C42;&#x3002;</p>
+</li>
+<li><p>Attention&#xFF1A;Dot-product&#x7C7B;&#x578B;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x5C42;&#x3002;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x6784;&#x5EFA;&#x6CE8;&#x610F;&#x529B;&#x6A21;&#x578B;&#x3002;</p>
+</li>
+<li><p>AdditiveAttention&#xFF1A;Additive&#x7C7B;&#x578B;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x5C42;&#x3002;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x6784;&#x5EFA;&#x6CE8;&#x610F;&#x529B;&#x6A21;&#x578B;&#x3002;</p>
+</li>
+<li><p>TimeDistributed&#xFF1A;&#x65F6;&#x95F4;&#x5206;&#x5E03;&#x5305;&#x88C5;&#x5668;&#x3002;&#x5305;&#x88C5;&#x540E;&#x53EF;&#x4EE5;&#x5C06;Dense&#x3001;Conv2D&#x7B49;&#x4F5C;&#x7528;&#x5230;&#x6BCF;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x7247;&#x6BB5;&#x4E0A;&#x3002;</p>
+</li>
+</ul>
+<pre><code class="lang-python">
+
+</code></pre>
+<h3 id="&#x4E8C;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x6A21;&#x578B;&#x5C42;">&#x4E8C;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x6A21;&#x578B;&#x5C42;</h3>
+<p>&#x5982;&#x679C;&#x81EA;&#x5B9A;&#x4E49;&#x6A21;&#x578B;&#x5C42;&#x6CA1;&#x6709;&#x9700;&#x8981;&#x88AB;&#x8BAD;&#x7EC3;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x4E00;&#x822C;&#x63A8;&#x8350;&#x4F7F;&#x7528;Lamda&#x5C42;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x81EA;&#x5B9A;&#x4E49;&#x6A21;&#x578B;&#x5C42;&#x6709;&#x9700;&#x8981;&#x88AB;&#x8BAD;&#x7EC3;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5BF9;Layer&#x57FA;&#x7C7B;&#x5B50;&#x7C7B;&#x5316;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>Lamda&#x5C42;&#x7531;&#x4E8E;&#x6CA1;&#x6709;&#x9700;&#x8981;&#x88AB;&#x8BAD;&#x7EC3;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x6B63;&#x5411;&#x4F20;&#x64AD;&#x903B;&#x8F91;&#x5373;&#x53EF;&#xFF0C;&#x4F7F;&#x7528;&#x6BD4;Layer&#x57FA;&#x7C7B;&#x5B50;&#x7C7B;&#x5316;&#x66F4;&#x52A0;&#x7B80;&#x5355;&#x3002;</p>
+<p>Lamda&#x5C42;&#x7684;&#x6B63;&#x5411;&#x903B;&#x8F91;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Python&#x7684;lambda&#x51FD;&#x6570;&#x6765;&#x8868;&#x8FBE;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;def&#x5173;&#x952E;&#x5B57;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#x6765;&#x8868;&#x8FBE;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf
+<span class="hljs-keyword">from</span> tensorflow.keras <span class="hljs-keyword">import</span> layers,models,regularizers
+
+mypower = layers.Lambda(<span class="hljs-keyword">lambda</span> x:tf.math.pow(x,<span class="hljs-number">2</span>))
+mypower(tf.range(<span class="hljs-number">5</span>))
+</code></pre>
+<pre><code>&lt;tf.Tensor: shape=(5,), dtype=int32, numpy=array([ 0,  1,  4,  9, 16], dtype=int32)&gt;
+</code></pre><p>Layer&#x7684;&#x5B50;&#x7C7B;&#x5316;&#x4E00;&#x822C;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x5B9E;&#x73B0;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;&#xFF0C;Build&#x65B9;&#x6CD5;&#x548C;Call&#x65B9;&#x6CD5;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5316;&#x7684;&#x7EBF;&#x6027;&#x5C42;&#x7684;&#x8303;&#x4F8B;&#xFF0C;&#x7C7B;&#x4F3C;Dense.</p>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Linear</span><span class="hljs-params">(layers.Layer)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, units=<span class="hljs-number">32</span>, **kwargs)</span>:</span>
+        super(Linear, self).__init__(**kwargs)
+        self.units = units
+
+    <span class="hljs-comment">#build&#x65B9;&#x6CD5;&#x4E00;&#x822C;&#x5B9A;&#x4E49;Layer&#x9700;&#x8981;&#x88AB;&#x8BAD;&#x7EC3;&#x7684;&#x53C2;&#x6570;&#x3002;    </span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">build</span><span class="hljs-params">(self, input_shape)</span>:</span> 
+        self.w = self.add_weight(shape=(input_shape[<span class="hljs-number">-1</span>], self.units),
+                                 initializer=<span class="hljs-string">&apos;random_normal&apos;</span>,
+                                 trainable=<span class="hljs-keyword">True</span>)
+        self.b = self.add_weight(shape=(self.units,),
+                                 initializer=<span class="hljs-string">&apos;random_normal&apos;</span>,
+                                 trainable=<span class="hljs-keyword">True</span>)
+        super(Linear,self).build(input_shape) <span class="hljs-comment"># &#x76F8;&#x5F53;&#x4E8E;&#x8BBE;&#x7F6E;self.built = True</span>
+
+    <span class="hljs-comment">#call&#x65B9;&#x6CD5;&#x4E00;&#x822C;&#x5B9A;&#x4E49;&#x6B63;&#x5411;&#x4F20;&#x64AD;&#x8FD0;&#x7B97;&#x903B;&#x8F91;&#xFF0C;__call__&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x4E86;&#x5B83;&#x3002;    </span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">call</span><span class="hljs-params">(self, inputs)</span>:</span> 
+        <span class="hljs-keyword">return</span> tf.matmul(inputs, self.w) + self.b
+
+    <span class="hljs-comment">#&#x5982;&#x679C;&#x8981;&#x8BA9;&#x81EA;&#x5B9A;&#x4E49;&#x7684;Layer&#x901A;&#x8FC7;Functional API &#x7EC4;&#x5408;&#x6210;&#x6A21;&#x578B;&#x65F6;&#x53EF;&#x4EE5;&#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x9700;&#x8981;&#x81EA;&#x5B9A;&#x4E49;get_config&#x65B9;&#x6CD5;&#x3002;</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_config</span><span class="hljs-params">(self)</span>:</span>  
+        config = super(Linear, self).get_config()
+        config.update({<span class="hljs-string">&apos;units&apos;</span>: self.units})
+        <span class="hljs-keyword">return</span> config
+</code></pre>
+<pre><code class="lang-python">linear = Linear(units = <span class="hljs-number">8</span>)
+print(linear.built)
+<span class="hljs-comment">#&#x6307;&#x5B9A;input_shape&#xFF0C;&#x663E;&#x5F0F;&#x8C03;&#x7528;build&#x65B9;&#x6CD5;&#xFF0C;&#x7B2C;0&#x7EF4;&#x4EE3;&#x8868;&#x6837;&#x672C;&#x6570;&#x91CF;&#xFF0C;&#x7528;None&#x586B;&#x5145;</span>
+linear.build(input_shape = (<span class="hljs-keyword">None</span>,<span class="hljs-number">16</span>)) 
+print(linear.built)
+</code></pre>
+<pre><code>False
+True
+</code></pre><pre><code class="lang-python">linear = Linear(units = <span class="hljs-number">8</span>)
+print(linear.built)
+linear.build(input_shape = (<span class="hljs-keyword">None</span>,<span class="hljs-number">16</span>)) 
+print(linear.compute_output_shape(input_shape = (<span class="hljs-keyword">None</span>,<span class="hljs-number">16</span>)))
+</code></pre>
+<pre><code>False
+(None, 8)
+</code></pre><pre><code class="lang-python">linear = Linear(units = <span class="hljs-number">16</span>)
+print(linear.built)
+<span class="hljs-comment">#&#x5982;&#x679C;built = False&#xFF0C;&#x8C03;&#x7528;__call__&#x65F6;&#x4F1A;&#x5148;&#x8C03;&#x7528;build&#x65B9;&#x6CD5;, &#x518D;&#x8C03;&#x7528;call&#x65B9;&#x6CD5;&#x3002;</span>
+linear(tf.random.uniform((<span class="hljs-number">100</span>,<span class="hljs-number">64</span>))) 
+print(linear.built)
+config = linear.get_config()
+print(config)
+</code></pre>
+<pre><code>False
+True
+{&apos;name&apos;: &apos;linear_3&apos;, &apos;trainable&apos;: True, &apos;dtype&apos;: &apos;float32&apos;, &apos;units&apos;: 16}
+</code></pre><pre><code class="lang-python">tf.keras.backend.clear_session()
+
+model = models.Sequential()
+<span class="hljs-comment">#&#x6CE8;&#x610F;&#x8BE5;&#x5904;&#x7684;input_shape&#x4F1A;&#x88AB;&#x6A21;&#x578B;&#x52A0;&#x5DE5;&#xFF0C;&#x65E0;&#x9700;&#x4F7F;&#x7528;None&#x4EE3;&#x8868;&#x6837;&#x672C;&#x6570;&#x91CF;&#x7EF4;</span>
+model.add(Linear(units = <span class="hljs-number">16</span>,input_shape = (<span class="hljs-number">64</span>,)))  
+print(<span class="hljs-string">&quot;model.input_shape: &quot;</span>,model.input_shape)
+print(<span class="hljs-string">&quot;model.output_shape: &quot;</span>,model.output_shape)
+model.summary()
+</code></pre>
+<pre><code>model.input_shape:  (None, 64)
+model.output_shape:  (None, 16)
+Model: &quot;sequential&quot;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+linear (Linear)              (None, 16)                1040      
+=================================================================
+Total params: 1,040
+Trainable params: 1,040
+Non-trainable params: 0
+</code></pre><pre><code class="lang-python">
+
+</code></pre>
+<p>&#x5982;&#x679C;&#x5BF9;&#x672C;&#x4E66;&#x5185;&#x5BB9;&#x7406;&#x89E3;&#x4E0A;&#x6709;&#x9700;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x548C;&#x4F5C;&#x8005;&#x4EA4;&#x6D41;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6B22;&#x8FCE;&#x5728;&#x516C;&#x4F17;&#x53F7;&quot;Python&#x4E0E;&#x7B97;&#x6CD5;&#x4E4B;&#x7F8E;&quot;&#x4E0B;&#x7559;&#x8A00;&#x3002;&#x4F5C;&#x8005;&#x65F6;&#x95F4;&#x548C;&#x7CBE;&#x529B;&#x6709;&#x9650;&#xFF0C;&#x4F1A;&#x914C;&#x60C5;&#x4E88;&#x4EE5;&#x56DE;&#x590D;&#x3002;</p>
+<p><img src="data/Python&#x4E0E;&#x7B97;&#x6CD5;&#x4E4B;&#x7F8E;logo.jpg" alt="image.png"></p>
+<pre><code class="lang-python">
+
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="5-3,激活函数activation.html" class="navigation navigation-prev " aria-label="Previous page: 5-3,激活函数activation">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="5-5,损失函数losses.html" class="navigation navigation-next " aria-label="Next page: 5-5,损失函数losses">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"5-4,模型层layers","level":"1.25","depth":1,"next":{"title":"5-5,损失函数losses","level":"1.26","depth":1,"path":"5-5,损失函数losses.md","ref":"./5-5,损失函数losses.md","articles":[]},"previous":{"title":"5-3,激活函数activation","level":"1.24","depth":1,"path":"5-3,激活函数activation.md","ref":"./5-3,激活函数activation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5-4,模型层layers.md","mtime":"2020-03-22T08:44:43.631Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-22T09:03:39.786Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
